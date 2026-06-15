@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MCL Advisors — Hospitality Deal Advisory</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy:  #0D1B2A;
+      --gold:  #C9A84C;
+      --light: #F5F2EC;
+      --gray:  #6B7280;
+      --white: #FFFFFF;
+      --mid:   #E5E0D5;
+      --dark2: #162840;
+    }
+    body { font-family: 'Georgia', serif; background: var(--white); color: var(--navy); }
+
+    nav {
+      background: var(--navy); display: flex; justify-content: space-between;
+      align-items: center; padding: 0 48px; height: 64px;
+      position: sticky; top: 0; z-index: 100; border-bottom: 2px solid var(--gold);
+    }
+    .nav-logo { color: var(--white); font-size: 17px; letter-spacing: 0.12em; font-weight: bold; }
+    .nav-logo span { color: var(--gold); }
+    .nav-links { display: flex; gap: 32px; }
+    .nav-links a {
+      color: rgba(255,255,255,0.75); text-decoration: none;
+      font-family: Arial, sans-serif; font-size: 12px;
+      letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+
+    .hero { background: var(--navy); padding: 96px 48px 80px; text-align: center; }
+    .hero-eyebrow {
+      font-family: Arial, sans-serif; font-size: 11px; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-size: clamp(32px, 5vw, 52px); color: var(--white); font-weight: normal;
+      line-height: 1.2; max-width: 760px; margin: 0 auto 24px;
+    }
+    .hero h1 em { color: var(--gold); font-style: normal; }
+    .hero-sub {
+      font-family: Arial, sans-serif; font-size: 15px; color: rgba(255,255,255,0.65);
+      max-width: 560px; margin: 0 auto 40px; line-height: 1.7;
+    }
+    .hero-cta {
+      display: inline-block; background: var(--gold); color: var(--navy);
+      font-family: Arial, sans-serif; font-size: 12px; font-weight: bold;
+      letter-spacing: 0.1em; text-transform: uppercase; padding: 14px 36px;
+      text-decoration: none; transition: opacity 0.2s;
+    }
+    .hero-cta:hover { opacity: 0.85; }
+
+    .positioning {
+      background: var(--light); padding: 28px 48px; text-align: center;
+      border-bottom: 1px solid var(--mid);
+    }
+    .positioning p {
+      font-style: italic; font-size: 15px; color: var(--navy);
+      max-width: 720px; margin: 0 auto; line-height: 1.7;
+    }
+
+    .services { padding: 80px 48px; max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      font-family: Arial, sans-serif; font-size: 10px; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 12px;
+    }
+    .section-title { font-size: 28px; font-weight: normal; color: var(--navy); margin-bottom: 48px; }
+    .services-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: var(--mid); border: 1px solid var(--mid); }
+    .service-card { background: var(--white); padding: 36px 32px; transition: background 0.2s; }
+    .service-card:hover { background: var(--light); }
+    .service-num {
+      display: inline-block; background: var(--gold); color: var(--navy);
+      font-family: Arial, sans-serif; font-size: 10px; font-weight: bold;
+      padding: 3px 8px; margin-bottom: 14px;
+    }
+    .service-card h3 { font-size: 17px; font-weight: bold; color: var(--navy); margin-bottom: 6px; }
+    .service-sub {
+      font-family: Arial, sans-serif; font-size: 11px; color: var(--gray);
+      font-style: italic; margin-bottom: 16px; padding-bottom: 16px;
+      border-bottom: 1px solid var(--gold);
+    }
+    .service-card ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .service-card ul li {
+      font-family: Arial, sans-serif; font-size: 13px; color: var(--navy);
+      line-height: 1.55; padding-left: 14px; position: relative;
+    }
+    .service-card ul li::before {
+      content: ''; position: absolute; left: 0; top: 7px;
+      width: 5px; height: 5px; background: var(--gold); border-radius: 50%;
+    }
+
+    .fees { background: var(--navy); padding: 64px 48px; }
+    .fees-inner { max-width: 1100px; margin: 0 auto; }
+    .fees .section-title { color: var(--white); margin-bottom: 36px; }
+    .fees-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .fee-card { background: var(--dark2); padding: 28px 24px; border-left: 3px solid var(--gold); }
+    .fee-card h4 { font-family: Arial, sans-serif; font-size: 13px; font-weight: bold; color: var(--gold); margin-bottom: 10px; }
+    .fee-card p { font-family: Arial, sans-serif; font-size: 12.5px; color: rgba(255,255,255,0.6); line-height: 1.6; }
+    .fees-note { font-family: Arial, sans-serif; font-size: 11px; color: rgba(255,255,255,0.35); margin-top: 24px; text-align: center; }
+
+    .about {
+      padding: 80px 48px; max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+    }
+    .about-text h2 { font-size: 28px; font-weight: normal; margin-bottom: 20px; }
+    .about-text p { font-family: Arial, sans-serif; font-size: 14px; color: var(--gray); line-height: 1.75; margin-bottom: 16px; }
+    .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: var(--mid); border: 1px solid var(--mid); }
+    .stat-box { background: var(--light); padding: 28px 24px; text-align: center; }
+    .stat-val { font-size: 32px; color: var(--navy); display: block; margin-bottom: 6px; }
+    .stat-label { font-family: Arial, sans-serif; font-size: 11px; color: var(--gray); line-height: 1.4; }
+
+    .contact { background: var(--light); padding: 80px 48px; border-top: 1px solid var(--mid); }
+    .contact-inner { max-width: 600px; margin: 0 auto; text-align: center; }
+    .contact h2 { font-size: 28px; font-weight: normal; margin-bottom: 16px; }
+    .contact p { font-family: Arial, sans-serif; font-size: 14px; color: var(--gray); line-height: 1.7; margin-bottom: 36px; }
+    .contact-details { display: flex; justify-content: center; gap: 48px; margin-bottom: 36px; }
+    .contact-item .label { font-family: Arial, sans-serif; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
+    .contact-item a, .contact-item span { font-family: Arial, sans-serif; font-size: 14px; color: var(--navy); text-decoration: none; font-weight: bold; }
+    .contact-item a:hover { color: var(--gold); }
+    .contact-cta {
+      display: inline-block; background: var(--navy); color: var(--white);
+      font-family: Arial, sans-serif; font-size: 12px; font-weight: bold;
+      letter-spacing: 0.1em; text-transform: uppercase; padding: 14px 36px;
+      text-decoration: none; transition: background 0.2s;
+    }
+    .contact-cta:hover { background: var(--gold); color: var(--navy); }
+
+    footer {
+      background: var(--navy); padding: 24px 48px;
+      display: flex; justify-content: space-between; align-items: center;
+      border-top: 2px solid var(--gold);
+    }
+    footer .logo { color: var(--white); font-size: 13px; letter-spacing: 0.1em; }
+    footer .logo span { color: var(--gold); }
+    footer p { font-family: Arial, sans-serif; font-size: 11px; color: rgba(255,255,255,0.35); }
+
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; } .nav-links { display: none; }
+      .hero, .services, .fees, .contact { padding: 48px 24px; }
+      .about { padding: 48px 24px; grid-template-columns: 1fr; gap: 40px; }
+      .services-grid, .fees-grid { grid-template-columns: 1fr; }
+      footer { flex-direction: column; gap: 12px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-logo">MCL <span>ADVISORS</span></div>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#fees">Fee Structure</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <p class="hero-eyebrow">Hospitality Deal Advisory</p>
+    <h1>Advisory for every stage of <em>hotel asset ownership</em></h1>
+    <p class="hero-sub">We work with hotel investors, owners, and operators navigating transactions, capital events, and the full arc of asset ownership.</p>
+    <a href="#contact" class="hero-cta">Start a Conversation</a>
+  </section>
+
+  <div class="positioning">
+    <p>Operator-side expertise across acquisitions, dispositions, refinancing, management selection, and asset intelligence — structured to the deal, not the operating budget.</p>
+  </div>
+
+  <section class="services" id="services">
+    <p class="section-label">What We Do</p>
+    <h2 class="section-title">Four Service Areas</h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-num">01</div>
+        <h3>Transaction Advisory</h3>
+        <p class="service-sub">Critical Path · Diligence · Disposition · Refinance · M&A · Capital Events</p>
+        <ul>
+          <li><b>Critical Path & Diligence Management</b> — Structuring the transaction timeline, coordinating all diligence workstreams, and keeping deals on track from LOI through close.</li>
+          <li><b>Disposition Preparation</b> — Data room organization, asset documentation, sell-side positioning, and broker coordination to maximize price and speed to close.</li>
+          <li><b>Refinance & Recapitalization</b> — Lender package preparation, DSCR covenant review, and capital structure optimization for refi and recap events.</li>
+          <li><b>M&A & Capital Events</b> — Portfolio-level transaction support, JV structuring, and advisory through complex multi-asset or corporate-level deals.</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-num">02</div>
+        <h3>Operator & Brand Selection</h3>
+        <p class="service-sub">Management Search · Contract Negotiation · Flag Strategy</p>
+        <ul>
+          <li><b>Operator Search & Evaluation</b> — Sourcing, RFP process, and structured interview across full-service, select-service, and lifestyle segments.</li>
+          <li><b>Management Agreement Negotiation</b> — Fee structures, performance thresholds, termination rights, and key-man provisions — aligned to owner outcomes.</li>
+          <li><b>Brand & Flag Strategy</b> — Franchise evaluation, flag selection, PIP scope negotiation, and brand conversion planning.</li>
+          <li><b>Transition Management</b> — Coordinating operator hand-off to protect NOI and guest continuity through ownership or management change.</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-num">03</div>
+        <h3>Ongoing Investment Management</h3>
+        <p class="service-sub">Portfolio Oversight · Performance Monitoring · Capital Planning</p>
+        <ul>
+          <li><b>Portfolio Advisory Retainer</b> — Ongoing coverage across active deal pipelines, asset reviews, and strategic decisions for owners managing multiple assets.</li>
+          <li><b>Performance Monitoring</b> — RevPAR tracking, operator accountability, and NOI benchmarking against underwriting with clear escalation protocols.</li>
+          <li><b>Capital Planning & CapEx Oversight</b> — FF&E reserve strategy, PIP execution, and renovation scope management aligned to hold-period objectives.</li>
+          <li><b>Lender & Stakeholder Reporting</b> — Investor and lender reporting packages, covenant compliance, and variance analysis.</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-num">04</div>
+        <h3>Asset Intelligence & Data</h3>
+        <p class="service-sub">Document Abstraction · AI Analysis · Data Institutionalization</p>
+        <ul>
+          <li><b>Contract & Document Abstraction</b> — AI-powered extraction of key terms from management agreements, franchise agreements, loan documents, and ground leases.</li>
+          <li><b>Pre-Transaction Asset Documentation</b> — Organize and institutionalize asset records before going to market — reducing buyer friction and supporting price.</li>
+          <li><b>Portfolio Data Infrastructure</b> — Workflow design and data architecture for operators and owners managing 10–100+ assets.</li>
+          <li><b>AI Platform Advisory</b> — Helping investors integrate AI into portfolio operations. Phase 1 assessment through ongoing implementation support.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="fees" id="fees">
+    <div class="fees-inner">
+      <p class="section-label">How We Work</p>
+      <h2 class="section-title">Fee Structure</h2>
+      <div class="fees-grid">
+        <div class="fee-card">
+          <h4>Model A — Fixed Fee</h4>
+          <p>Flat, scoped upfront. Best for defined engagements: diligence support, data room preparation, refi packages with a clear end point.</p>
+        </div>
+        <div class="fee-card">
+          <h4>Model B — Fixed + Success Fee</h4>
+          <p>Modest fixed fee through diligence, plus a negotiated percentage of purchase price charged to the transaction at close. Fixed fee credited at closing. Most common structure.</p>
+        </div>
+        <div class="fee-card">
+          <h4>Model C — Monthly Retainer</h4>
+          <p>Fixed monthly for ongoing pipeline coverage and portfolio oversight. Best for investors with active deal flow across multiple assets.</p>
+        </div>
+      </div>
+      <p class="fees-note">All engagements are fixed-fee and scoped in advance — no open-ended hourly billing. Fees for transaction engagements are structured to the deal and charged at closing. Pricing confirmed in the scoping call.</p>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="about-text">
+      <p class="section-label">About</p>
+      <h2>Operator-side expertise, applied to every stage of the deal</h2>
+      <p>MCL Advisors brings institutional-grade hotel advisory to investors, owners, and operators who need a senior operator in their corner — not a generalist consultant.</p>
+      <p>Our work spans the full arc of asset ownership: from sourcing and underwriting through management selection, ongoing oversight, and eventual disposition or recapitalization.</p>
+      <p>Every engagement is fixed-fee and scoped in advance. We charge to the deal, not the operating budget.</p>
+    </div>
+    <div class="about-stats">
+      <div class="stat-box">
+        <span class="stat-val">$3.5B+</span>
+        <span class="stat-label">Transaction &amp; Development Volume</span>
+      </div>
+      <div class="stat-box">
+        <span class="stat-val">40+</span>
+        <span class="stat-label">Management Contracts Negotiated</span>
+      </div>
+      <div class="stat-box">
+        <span class="stat-val">80+</span>
+        <span class="stat-label">Hotel Assets Overseen</span>
+      </div>
+      <div class="stat-box">
+        <span class="stat-val">15 Yrs</span>
+        <span class="stat-label">Senior Operator Experience</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="contact-inner">
+      <p class="section-label">Get in Touch</p>
+      <h2>Start with a scoping call</h2>
+      <p>No proposals, no pitches. A direct conversation about your deal, your portfolio, or your question — and whether we're the right fit to help.</p>
+      <div class="contact-details">
+        <div class="contact-item">
+          <p class="label">Email</p>
+          <a href="mailto:michael@mcladvisor.com">michael@mcladvisor.com</a>
+        </div>
+        <div class="contact-item">
+          <p class="label">Phone</p>
+          <span>(248) 990-8017</span>
+        </div>
+      </div>
+      <a href="mailto:michael@mcladvisor.com" class="contact-cta">Send a Message</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="logo">MCL <span>ADVISORS</span></div>
+    <p>&copy; 2026 MCL Advisors. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
