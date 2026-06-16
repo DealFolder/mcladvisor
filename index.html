@@ -25,73 +25,42 @@
     .nav-logo { color: var(--white); font-size: 17px; letter-spacing: 0.12em; font-weight: bold; }
     .nav-logo span { color: var(--gold); }
     .nav-links { display: flex; gap: 32px; }
-    .nav-links a {
-      color: rgba(255,255,255,0.75); text-decoration: none;
-      font-family: Arial, sans-serif; font-size: 12px;
-      letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.2s;
-    }
+    .nav-links a { color: rgba(255,255,255,0.75); text-decoration: none; font-family: Arial, sans-serif; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.2s; }
     .nav-links a:hover { color: var(--gold); }
 
     .hero { background: var(--navy); padding: 96px 48px 80px; text-align: center; }
-    .hero-eyebrow {
-      font-family: Arial, sans-serif; font-size: 11px; letter-spacing: 0.2em;
-      text-transform: uppercase; color: var(--gold); margin-bottom: 20px;
-    }
-    .hero h1 {
-      font-size: clamp(32px, 5vw, 52px); color: var(--white); font-weight: normal;
-      line-height: 1.2; max-width: 760px; margin: 0 auto 24px;
-    }
+    .hero-eyebrow { font-family: Arial, sans-serif; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
+    .hero h1 { font-size: clamp(32px, 5vw, 52px); color: var(--white); font-weight: normal; line-height: 1.2; max-width: 760px; margin: 0 auto 24px; }
     .hero h1 em { color: var(--gold); font-style: normal; }
-    .hero-sub {
-      font-family: Arial, sans-serif; font-size: 15px; color: rgba(255,255,255,0.65);
-      max-width: 560px; margin: 0 auto 40px; line-height: 1.7;
-    }
-    .hero-cta {
-      display: inline-block; background: var(--gold); color: var(--navy);
-      font-family: Arial, sans-serif; font-size: 12px; font-weight: bold;
-      letter-spacing: 0.1em; text-transform: uppercase; padding: 14px 36px;
-      text-decoration: none; transition: opacity 0.2s;
-    }
+    .hero-sub { font-family: Arial, sans-serif; font-size: 15px; color: rgba(255,255,255,0.65); max-width: 560px; margin: 0 auto 40px; line-height: 1.7; }
+    .hero-cta { display: inline-block; background: var(--gold); color: var(--navy); font-family: Arial, sans-serif; font-size: 12px; font-weight: bold; letter-spacing: 0.1em; text-transform: uppercase; padding: 14px 36px; text-decoration: none; transition: opacity 0.2s; }
     .hero-cta:hover { opacity: 0.85; }
 
-    .positioning {
-      background: var(--light); padding: 28px 48px; text-align: center;
-      border-bottom: 1px solid var(--mid);
-    }
-    .positioning p {
-      font-style: italic; font-size: 15px; color: var(--navy);
-      max-width: 720px; margin: 0 auto; line-height: 1.7;
-    }
+    .positioning { background: var(--light); padding: 28px 48px; text-align: center; border-bottom: 1px solid var(--mid); }
+    .positioning p { font-style: italic; font-size: 15px; color: var(--navy); max-width: 720px; margin: 0 auto; line-height: 1.7; }
+
+    .section-label { font-family: Arial, sans-serif; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+    .section-title { font-size: 28px; font-weight: normal; color: var(--navy); margin-bottom: 48px; }
 
     .services { padding: 80px 48px; max-width: 1100px; margin: 0 auto; }
-    .section-label {
-      font-family: Arial, sans-serif; font-size: 10px; letter-spacing: 0.2em;
-      text-transform: uppercase; color: var(--gold); margin-bottom: 12px;
-    }
-    .section-title { font-size: 28px; font-weight: normal; color: var(--navy); margin-bottom: 48px; }
     .services-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: var(--mid); border: 1px solid var(--mid); }
     .service-card { background: var(--white); padding: 36px 32px; transition: background 0.2s; }
     .service-card:hover { background: var(--light); }
-    .service-num {
-      display: inline-block; background: var(--gold); color: var(--navy);
-      font-family: Arial, sans-serif; font-size: 10px; font-weight: bold;
-      padding: 3px 8px; margin-bottom: 14px;
-    }
+    .service-num { display: inline-block; background: var(--gold); color: var(--navy); font-family: Arial, sans-serif; font-size: 10px; font-weight: bold; padding: 3px 8px; margin-bottom: 14px; }
     .service-card h3 { font-size: 17px; font-weight: bold; color: var(--navy); margin-bottom: 6px; }
-    .service-sub {
-      font-family: Arial, sans-serif; font-size: 11px; color: var(--gray);
-      font-style: italic; margin-bottom: 16px; padding-bottom: 16px;
-      border-bottom: 1px solid var(--gold);
-    }
+    .service-sub { font-family: Arial, sans-serif; font-size: 11px; color: var(--gray); font-style: italic; margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid var(--gold); }
     .service-card ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-    .service-card ul li {
-      font-family: Arial, sans-serif; font-size: 13px; color: var(--navy);
-      line-height: 1.55; padding-left: 14px; position: relative;
-    }
-    .service-card ul li::before {
-      content: ''; position: absolute; left: 0; top: 7px;
-      width: 5px; height: 5px; background: var(--gold); border-radius: 50%;
-    }
+    .service-card ul li { font-family: Arial, sans-serif; font-size: 13px; color: var(--navy); line-height: 1.55; padding-left: 14px; position: relative; }
+    .service-card ul li::before { content: ''; position: absolute; left: 0; top: 7px; width: 5px; height: 5px; background: var(--gold); border-radius: 50%; }
+    .dealfolder-link { display: inline-block; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--mid); width: 100%; font-family: Arial, sans-serif; font-size: 12px; color: var(--gray); line-height: 1.5; }
+    .dealfolder-link a { color: var(--gold); text-decoration: none; font-weight: bold; }
+    .dealfolder-link a:hover { text-decoration: underline; }
+
+    .dealfolder-band { background: var(--dark2); padding: 40px 48px; text-align: center; border-top: 2px solid var(--gold); border-bottom: 2px solid var(--gold); }
+    .dealfolder-band p { font-family: Arial, sans-serif; font-size: 14px; color: rgba(255,255,255,0.7); max-width: 680px; margin: 0 auto 20px; line-height: 1.7; }
+    .dealfolder-band p strong { color: var(--gold); }
+    .dealfolder-band a { display: inline-block; border: 1px solid var(--gold); color: var(--gold); font-family: Arial, sans-serif; font-size: 11px; font-weight: bold; letter-spacing: 0.1em; text-transform: uppercase; padding: 10px 28px; text-decoration: none; transition: all 0.2s; }
+    .dealfolder-band a:hover { background: var(--gold); color: var(--navy); }
 
     .fees { background: var(--navy); padding: 64px 48px; }
     .fees-inner { max-width: 1100px; margin: 0 auto; }
@@ -102,47 +71,68 @@
     .fee-card p { font-family: Arial, sans-serif; font-size: 12.5px; color: rgba(255,255,255,0.6); line-height: 1.6; }
     .fees-note { font-family: Arial, sans-serif; font-size: 11px; color: rgba(255,255,255,0.35); margin-top: 24px; text-align: center; }
 
-    .about {
-      padding: 80px 48px; max-width: 1100px; margin: 0 auto;
-      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
-    }
-    .about-text h2 { font-size: 28px; font-weight: normal; margin-bottom: 20px; }
-    .about-text p { font-family: Arial, sans-serif; font-size: 14px; color: var(--gray); line-height: 1.75; margin-bottom: 16px; }
-    .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: var(--mid); border: 1px solid var(--mid); }
-    .stat-box { background: var(--light); padding: 28px 24px; text-align: center; }
-    .stat-val { font-size: 32px; color: var(--navy); display: block; margin-bottom: 6px; }
-    .stat-label { font-family: Arial, sans-serif; font-size: 11px; color: var(--gray); line-height: 1.4; }
+    .case-study { padding: 80px 48px; background: var(--light); border-top: 1px solid var(--mid); }
+    .case-study-inner { max-width: 1100px; margin: 0 auto; }
+    .case-study-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: var(--mid); border: 1px solid var(--mid); }
+    .cs-placeholder { background: var(--white); padding: 48px 32px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; min-height: 220px; }
+    .cs-placeholder p { font-family: Arial, sans-serif; font-size: 13px; color: var(--mid); font-style: italic; }
 
-    .contact { background: var(--light); padding: 80px 48px; border-top: 1px solid var(--mid); }
+    .partners { padding: 64px 48px; border-top: 1px solid var(--mid); }
+    .partners-inner { max-width: 1100px; margin: 0 auto; text-align: center; }
+    .partners .section-title { margin-bottom: 12px; }
+    .partners-sub { font-family: Arial, sans-serif; font-size: 13px; color: var(--gray); margin-bottom: 48px; }
+    .partners-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; background: var(--mid); border: 1px solid var(--mid); }
+    .partner-placeholder { background: var(--white); padding: 36px 20px; display: flex; align-items: center; justify-content: center; min-height: 90px; }
+    .partner-placeholder p { font-family: Arial, sans-serif; font-size: 12px; color: var(--mid); font-style: italic; }
+
+    /* ABOUT */
+    .about { padding: 80px 48px; background: var(--light); border-top: 1px solid var(--mid); }
+    .about-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 380px 1fr; gap: 64px; align-items: start; }
+
+    .bio-photo-wrap { position: relative; }
+    .bio-photo { width: 100%; aspect-ratio: 3/4; overflow: hidden; position: relative; background: var(--navy); }
+    .bio-photo img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.45s ease; }
+    .bio-photo img.active { opacity: 1; }
+    .bio-photo img.default-photo { opacity: 1; }
+    .bio-photo img.default-photo.hidden { opacity: 0; }
+
+    .bio-photo-caption { font-family: Arial, sans-serif; font-size: 11px; color: var(--gray); text-align: center; margin-top: 10px; font-style: italic; min-height: 18px; transition: opacity 0.3s; }
+    .bio-name { font-size: 18px; font-weight: bold; color: var(--navy); margin-top: 14px; }
+    .bio-title { font-family: Arial, sans-serif; font-size: 12px; color: var(--gray); margin-top: 4px; }
+
+    .about-text h2 { font-size: 28px; font-weight: normal; margin-bottom: 24px; }
+    .bio-body { font-family: Arial, sans-serif; font-size: 14px; color: var(--gray); line-height: 1.85; margin-bottom: 32px; }
+    .bio-body p { margin-bottom: 18px; }
+    .bio-keyword { color: var(--gold); font-weight: bold; cursor: default; border-bottom: 1px dotted var(--gold); transition: color 0.2s; display: inline-block; }
+    .bio-keyword:hover { color: var(--navy); }
+
+    .about-credentials { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: var(--mid); border: 1px solid var(--mid); }
+    .cred-box { background: var(--white); padding: 20px; }
+    .cred-val { font-size: 26px; color: var(--navy); display: block; margin-bottom: 4px; }
+    .cred-label { font-family: Arial, sans-serif; font-size: 11px; color: var(--gray); line-height: 1.4; }
+
+    .contact { background: var(--navy); padding: 80px 48px; }
     .contact-inner { max-width: 600px; margin: 0 auto; text-align: center; }
-    .contact h2 { font-size: 28px; font-weight: normal; margin-bottom: 16px; }
-    .contact p { font-family: Arial, sans-serif; font-size: 14px; color: var(--gray); line-height: 1.7; margin-bottom: 36px; }
+    .contact .section-label { color: var(--gold); }
+    .contact h2 { font-size: 28px; font-weight: normal; color: var(--white); margin-bottom: 16px; }
+    .contact p { font-family: Arial, sans-serif; font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.7; margin-bottom: 36px; }
     .contact-details { display: flex; justify-content: center; gap: 48px; margin-bottom: 36px; }
     .contact-item .label { font-family: Arial, sans-serif; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
-    .contact-item a, .contact-item span { font-family: Arial, sans-serif; font-size: 14px; color: var(--navy); text-decoration: none; font-weight: bold; }
+    .contact-item a, .contact-item span { font-family: Arial, sans-serif; font-size: 14px; color: var(--white); text-decoration: none; font-weight: bold; }
     .contact-item a:hover { color: var(--gold); }
-    .contact-cta {
-      display: inline-block; background: var(--navy); color: var(--white);
-      font-family: Arial, sans-serif; font-size: 12px; font-weight: bold;
-      letter-spacing: 0.1em; text-transform: uppercase; padding: 14px 36px;
-      text-decoration: none; transition: background 0.2s;
-    }
-    .contact-cta:hover { background: var(--gold); color: var(--navy); }
+    .contact-cta { display: inline-block; background: var(--gold); color: var(--navy); font-family: Arial, sans-serif; font-size: 12px; font-weight: bold; letter-spacing: 0.1em; text-transform: uppercase; padding: 14px 36px; text-decoration: none; transition: opacity 0.2s; }
+    .contact-cta:hover { opacity: 0.85; }
 
-    footer {
-      background: var(--navy); padding: 24px 48px;
-      display: flex; justify-content: space-between; align-items: center;
-      border-top: 2px solid var(--gold);
-    }
+    footer { background: var(--dark2); padding: 24px 48px; display: flex; justify-content: space-between; align-items: center; border-top: 2px solid var(--gold); }
     footer .logo { color: var(--white); font-size: 13px; letter-spacing: 0.1em; }
     footer .logo span { color: var(--gold); }
     footer p { font-family: Arial, sans-serif; font-size: 11px; color: rgba(255,255,255,0.35); }
 
+    @media (max-width: 900px) { .about-inner { grid-template-columns: 1fr; } }
     @media (max-width: 768px) {
       nav { padding: 0 20px; } .nav-links { display: none; }
-      .hero, .services, .fees, .contact { padding: 48px 24px; }
-      .about { padding: 48px 24px; grid-template-columns: 1fr; gap: 40px; }
-      .services-grid, .fees-grid { grid-template-columns: 1fr; }
+      .hero, .services, .fees, .case-study, .partners, .about, .contact { padding: 48px 24px; }
+      .services-grid, .fees-grid, .case-study-grid, .partners-grid, .about-credentials { grid-template-columns: 1fr; }
       footer { flex-direction: column; gap: 12px; text-align: center; }
     }
   </style>
@@ -154,6 +144,7 @@
     <div class="nav-links">
       <a href="#services">Services</a>
       <a href="#fees">Fee Structure</a>
+      <a href="#case-study">Case Studies</a>
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
     </div>
@@ -161,13 +152,13 @@
 
   <section class="hero">
     <p class="hero-eyebrow">Hospitality Deal Advisory</p>
-    <h1>Advisory for every stage of <em>hotel asset ownership</em></h1>
-    <p class="hero-sub">We work with hotel investors, owners, and operators navigating transactions, capital events, and the full arc of asset ownership.</p>
+    <h1>Advisory across the full <em>hotel deal lifecycle</em></h1>
+    <p class="hero-sub">We work with hotel investors, owners, and operators navigating transactions, capital events, and every stage of asset ownership.</p>
     <a href="#contact" class="hero-cta">Start a Conversation</a>
   </section>
 
   <div class="positioning">
-    <p>Operator-side expertise across acquisitions, dispositions, refinancing, management selection, and asset intelligence — structured to the deal, not the operating budget.</p>
+    <p>From acquisition to disposition — and everything between. Transaction advisory, operator selection, ongoing investment management, and asset intelligence, structured to the deal.</p>
   </div>
 
   <section class="services" id="services">
@@ -217,9 +208,18 @@
           <li><b>Portfolio Data Infrastructure</b> — Workflow design and data architecture for operators and owners managing 10–100+ assets.</li>
           <li><b>AI Platform Advisory</b> — Helping investors integrate AI into portfolio operations. Phase 1 assessment through ongoing implementation support.</li>
         </ul>
+        <div class="dealfolder-link">
+          Built on <strong>DealFolder</strong> — our proprietary asset intelligence platform for hotel assets.
+          <br><a href="https://deal-folder.vercel.app" target="_blank">See the demo →</a>
+        </div>
       </div>
     </div>
   </section>
+
+  <div class="dealfolder-band">
+    <p><strong>Introducing DealFolder</strong> — the asset intelligence platform built specifically for hotel investors. One permanent folder per asset, AI-powered document analysis, and institutional memory that transfers with the deal.</p>
+    <a href="https://deal-folder.vercel.app" target="_blank">See it in action →</a>
+  </div>
 
   <section class="fees" id="fees">
     <div class="fees-inner">
@@ -243,30 +243,93 @@
     </div>
   </section>
 
-  <section class="about" id="about">
-    <div class="about-text">
-      <p class="section-label">About</p>
-      <h2>Operator-side expertise, applied to every stage of the deal</h2>
-      <p>MCL Advisors brings institutional-grade hotel advisory to investors, owners, and operators who need a senior operator in their corner — not a generalist consultant.</p>
-      <p>Our work spans the full arc of asset ownership: from sourcing and underwriting through management selection, ongoing oversight, and eventual disposition or recapitalization.</p>
-      <p>Every engagement is fixed-fee and scoped in advance. We charge to the deal, not the operating budget.</p>
+  <section class="case-study" id="case-study">
+    <div class="case-study-inner">
+      <p class="section-label">Work</p>
+      <h2 class="section-title">Case Studies</h2>
+      <div class="case-study-grid">
+        <div class="cs-placeholder"><p>Case study coming soon</p></div>
+        <div class="cs-placeholder"><p>Case study coming soon</p></div>
+        <div class="cs-placeholder"><p>Case study coming soon</p></div>
+        <div class="cs-placeholder"><p>Case study coming soon</p></div>
+      </div>
     </div>
-    <div class="about-stats">
-      <div class="stat-box">
-        <span class="stat-val">$3.5B+</span>
-        <span class="stat-label">Transaction &amp; Development Volume</span>
+  </section>
+
+  <section class="partners" id="partners">
+    <div class="partners-inner">
+      <p class="section-label">Relationships</p>
+      <h2 class="section-title">Trusted Partners & Networks</h2>
+      <p class="partners-sub">Built over 15 years at the intersection of hotel investment, operations, and capital markets.</p>
+      <div class="partners-grid">
+        <div class="partner-placeholder"><p>Partner coming soon</p></div>
+        <div class="partner-placeholder"><p>Partner coming soon</p></div>
+        <div class="partner-placeholder"><p>Partner coming soon</p></div>
+        <div class="partner-placeholder"><p>Partner coming soon</p></div>
+        <div class="partner-placeholder"><p>Partner coming soon</p></div>
+        <div class="partner-placeholder"><p>Partner coming soon</p></div>
+        <div class="partner-placeholder"><p>Partner coming soon</p></div>
+        <div class="partner-placeholder"><p>Partner coming soon</p></div>
       </div>
-      <div class="stat-box">
-        <span class="stat-val">40+</span>
-        <span class="stat-label">Management Contracts Negotiated</span>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="about-inner">
+      <div class="bio-photo-wrap">
+        <div class="bio-photo" id="bioPhoto">
+          <img src="photos/photo-default.jpg"  id="img-default"  class="default-photo" alt="Michael Yousif" />
+          <img src="photos/photo-family.jpg"   id="img-family"   alt="Family" />
+          <img src="photos/photo-pizza.jpg"    id="img-pizza"    alt="Pizza night" />
+          <img src="photos/photo-beatles.jpg"  id="img-beatles"  alt="Beatles birthday" />
+          <img src="photos/photo-travel.jpg"   id="img-travel"   alt="Grand Hotel Mackinac" />
+          <img src="photos/photo-birding.jpg"  id="img-birding"  alt="Bald eagle" />
+          <img src="photos/photo-ski.jpg"      id="img-ski"      alt="Up north skiing" />
+        </div>
+        <div class="bio-photo-caption" id="photoCaption"></div>
+        <div class="bio-name">Michael Yousif</div>
+        <div class="bio-title">Founder, MCL Advisors</div>
       </div>
-      <div class="stat-box">
-        <span class="stat-val">80+</span>
-        <span class="stat-label">Hotel Assets Overseen</span>
-      </div>
-      <div class="stat-box">
-        <span class="stat-val">15 Yrs</span>
-        <span class="stat-label">Senior Operator Experience</span>
+
+      <div class="about-text">
+        <p class="section-label">About</p>
+        <h2>Michael Yousif</h2>
+        <div class="bio-body">
+          <p>Michael Yousif has spent his career at the intersection of hotel investment, operations, and capital markets — advising on transactions, building portfolios, and negotiating the agreements that determine how assets perform long after the deal closes.</p>
+          <p>To him, hospitality has always been personal. It's the belief that where you stay shapes how you experience a place — that the right property at the right moment can make a
+            <span class="bio-keyword" data-img="travel" data-caption="Grand Hotel, Mackinac Island">trip feel like a memory worth keeping</span>.
+            He's drawn to hotels that create that feeling: places that are new and surprising, and places that feel like they've always been there.</p>
+          <p>Outside of work, Michael is a committed
+            <span class="bio-keyword" data-img="family" data-caption="The whole crew">family man</span>,
+            a homemade
+            <span class="bio-keyword" data-img="pizza" data-caption="Friday night, every week">pizza perfectionist</span>,
+            and a lifelong
+            <span class="bio-keyword" data-img="beatles" data-caption="The Beatles, always">Beatles enthusiast</span>.
+            He rides bikes, lifts weights, spends time
+            <span class="bio-keyword" data-img="ski" data-caption="Up north, any chance he gets">up north</span>,
+            and has taken up
+            <span class="bio-keyword" data-img="birding" data-caption="Be still and observe">birding</span>
+            with the same curiosity he brings to everything he decides to learn.
+          </p>
+        </div>
+        <div class="about-credentials">
+          <div class="cred-box">
+            <span class="cred-val">$3.5B+</span>
+            <span class="cred-label">Transaction & Development Volume</span>
+          </div>
+          <div class="cred-box">
+            <span class="cred-val">40+</span>
+            <span class="cred-label">Management Contracts Negotiated</span>
+          </div>
+          <div class="cred-box">
+            <span class="cred-val">80+</span>
+            <span class="cred-label">Hotel Assets Overseen</span>
+          </div>
+          <div class="cred-box">
+            <span class="cred-val">15 Yrs</span>
+            <span class="cred-label">Senior Industry Experience</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -294,6 +357,30 @@
     <div class="logo">MCL <span>ADVISORS</span></div>
     <p>&copy; 2026 MCL Advisors. All rights reserved.</p>
   </footer>
+
+  <script>
+    const keywords   = document.querySelectorAll('.bio-keyword');
+    const caption    = document.getElementById('photoCaption');
+    const defaultImg = document.getElementById('img-default');
+    let   activeImg  = null;
+
+    keywords.forEach(kw => {
+      kw.addEventListener('mouseenter', () => {
+        const img = document.getElementById('img-' + kw.dataset.img);
+        if (!img) return;
+        defaultImg.classList.add('hidden');
+        if (activeImg && activeImg !== img) activeImg.classList.remove('active');
+        img.classList.add('active');
+        activeImg = img;
+        caption.textContent = kw.dataset.caption || '';
+      });
+      kw.addEventListener('mouseleave', () => {
+        if (activeImg) { activeImg.classList.remove('active'); activeImg = null; }
+        defaultImg.classList.remove('hidden');
+        caption.textContent = '';
+      });
+    });
+  </script>
 
 </body>
 </html>
