@@ -1,256 +1,806 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MCL Advisors — Hospitality Deal Advisory</title>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --navy:  #0D1B2A;
-      --gold:  #C9A84C;
-      --light: #F5F2EC;
-      --gray:  #6B7280;
-      --white: #FFFFFF;
-      --mid:   #E5E0D5;
-      --dark2: #162840;
-    }
-    body { font-family: 'Georgia', serif; background: var(--white); color: var(--navy); }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MCL Advisors — Hospitality Deal Advisory</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #B8963E;
+    --gold-light: #D4AF6A;
+    --ink: #1A1A18;
+    --slate: #4A4845;
+    --ash: #8A8680;
+    --paper: #FAFAF8;
+    --white: #FFFFFF;
+    --rule: 1px solid var(--gold);
+  }
 
-    /* ── NAV ── */
-    nav {
-      background: var(--white);
-      display: flex; justify-content: space-between;
-      align-items: center; padding: 0 48px; height: 72px;
-      position: sticky; top: 0; z-index: 100;
-      border-bottom: 1px solid var(--mid);
-      box-shadow: 0 1px 12px rgba(0,0,0,0.06);
-    }
-    .nav-logo img { height: 40px; display: block; }
-    .nav-links { display: flex; gap: 32px; align-items: center; }
-    .nav-links a { color: var(--navy); text-decoration: none; font-family: Arial, sans-serif; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.2s; }
-    .nav-links a:hover { color: var(--gold); }
-    .nav-links .nav-cta {
-      background: var(--navy); color: var(--white);
-      padding: 8px 20px; font-size: 11px; letter-spacing: 0.1em;
-      transition: background 0.2s;
-    }
-    .nav-links .nav-cta:hover { background: var(--gold); color: var(--navy); }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    color: var(--ink);
+    background: var(--white);
+    font-size: 15px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
 
-    /* ── HERO ── */
-    .hero { background: var(--navy); padding: 96px 48px 80px; text-align: center; }
-    .hero-eyebrow { font-family: Arial, sans-serif; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
-    .hero h1 { font-size: clamp(32px, 5vw, 52px); color: var(--white); font-weight: normal; line-height: 1.2; max-width: 760px; margin: 0 auto 24px; }
-    .hero h1 em { color: var(--gold); font-style: normal; }
-    .hero-sub { font-family: Arial, sans-serif; font-size: 15px; color: rgba(255,255,255,0.65); max-width: 560px; margin: 0 auto 40px; line-height: 1.7; }
-    .hero-cta { display: inline-block; background: var(--gold); color: var(--navy); font-family: Arial, sans-serif; font-size: 12px; font-weight: bold; letter-spacing: 0.1em; text-transform: uppercase; padding: 14px 36px; text-decoration: none; transition: opacity 0.2s; }
-    .hero-cta:hover { opacity: 0.85; }
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 48px;
+    background: rgba(255,255,255,0.96);
+    backdrop-filter: blur(8px);
+    border-bottom: var(--rule);
+  }
+  .nav-logo img { height: 36px; display: block; }
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+    align-items: center;
+  }
+  .nav-links a {
+    font-family: 'Jost', sans-serif;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--slate);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-cta {
+    font-family: 'Jost', sans-serif;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-decoration: none;
+    border: 1px solid var(--gold);
+    padding: 8px 20px;
+    transition: all 0.2s;
+  }
+  .nav-cta:hover { background: var(--gold); color: var(--white); }
 
-    .positioning { background: var(--light); padding: 28px 48px; text-align: center; border-bottom: 1px solid var(--mid); }
-    .positioning p { font-style: italic; font-size: 15px; color: var(--navy); max-width: 720px; margin: 0 auto; line-height: 1.7; }
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 120px 48px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(184,150,62,0.04) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .hero-eyebrow {
+    font-family: 'Jost', sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 32px;
+  }
+  .hero-tree {
+    width: 80px;
+    margin-bottom: 48px;
+    opacity: 0;
+    animation: fadeUp 1s ease 0.2s forwards;
+  }
+  .hero-headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(48px, 7vw, 88px);
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: 0.04em;
+    color: var(--ink);
+    margin-bottom: 28px;
+    opacity: 0;
+    animation: fadeUp 1s ease 0.4s forwards;
+  }
+  .hero-headline em { font-style: italic; color: var(--gold); }
+  .hero-sub {
+    font-family: 'Jost', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    letter-spacing: 0.08em;
+    color: var(--ash);
+    max-width: 520px;
+    margin: 0 auto 40px;
+    opacity: 0;
+    animation: fadeUp 1s ease 0.6s forwards;
+  }
+  .hero-divider {
+    width: 48px; height: 1px;
+    background: var(--gold);
+    margin: 0 auto 40px;
+    opacity: 0;
+    animation: fadeUp 1s ease 0.7s forwards;
+  }
+  .btn-primary {
+    display: inline-block;
+    font-family: 'Jost', sans-serif;
+    font-size: 11px; font-weight: 400;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--white);
+    background: var(--ink);
+    padding: 14px 36px;
+    text-decoration: none;
+    transition: background 0.2s;
+    opacity: 0;
+    animation: fadeUp 1s ease 0.8s forwards;
+  }
+  .btn-primary:hover { background: var(--gold); }
+  .btn-ghost {
+    display: inline-block;
+    font-family: 'Jost', sans-serif;
+    font-size: 11px; font-weight: 400;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink);
+    border: 1px solid var(--ink);
+    padding: 13px 36px;
+    text-decoration: none;
+    transition: all 0.2s;
+    margin-left: 16px;
+  }
+  .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
 
-    /* ── SHARED ── */
-    .section-label { font-family: Arial, sans-serif; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
-    .section-title { font-size: 28px; font-weight: normal; color: var(--navy); margin-bottom: 48px; }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
 
-    /* ── SERVICES ── */
-    .services { padding: 80px 48px; max-width: 1100px; margin: 0 auto; }
-    .services-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: var(--mid); border: 1px solid var(--mid); }
+  /* ── SHARED SECTION STYLES ── */
+  section { padding: 100px 48px; }
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+    display: block;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 300;
+    line-height: 1.15;
+    color: var(--ink);
+    margin-bottom: 20px;
+  }
+  .section-title em { font-style: italic; color: var(--gold); }
+  .section-body {
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--slate);
+    max-width: 620px;
+  }
+  .gold-rule {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, var(--gold) 0%, transparent 100%);
+    margin-bottom: 64px;
+  }
 
-    /* Accordion card */
-    .service-card { background: var(--white); transition: background 0.2s; }
-    .service-card-header {
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 24px 28px; cursor: pointer; user-select: none;
-      border-bottom: 1px solid transparent; transition: border-color 0.2s;
-    }
-    .service-card-header:hover { background: var(--light); }
-    .service-card.open .service-card-header { border-bottom: 1px solid var(--mid); }
-    .service-header-left { display: flex; align-items: center; gap: 14px; }
-    .service-num { display: inline-block; background: var(--gold); color: var(--navy); font-family: Arial, sans-serif; font-size: 10px; font-weight: bold; padding: 3px 8px; flex-shrink: 0; }
-    .service-header-text h3 { font-size: 16px; font-weight: bold; color: var(--navy); margin-bottom: 3px; }
-    .service-sub { font-family: Arial, sans-serif; font-size: 11px; color: var(--gray); font-style: italic; }
-    .service-chevron { font-size: 11px; color: var(--gold); flex-shrink: 0; transition: transform 0.25s; }
-    .service-card.open .service-chevron { transform: rotate(180deg); }
+  /* ── POSITIONING BAND ── */
+  .positioning {
+    background: var(--paper);
+    padding: 28px 48px;
+    text-align: center;
+    border-bottom: 1px solid rgba(184,150,62,0.2);
+  }
+  .positioning p {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: var(--ink);
+    max-width: 760px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
 
-    .service-card-body { display: none; padding: 0 28px 24px; }
-    .service-card.open .service-card-body { display: block; }
-    .service-card-body ul { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-top: 16px; }
-    .service-card-body ul li { font-family: Arial, sans-serif; font-size: 13px; color: var(--navy); line-height: 1.55; padding-left: 14px; position: relative; }
-    .service-card-body ul li::before { content: ''; position: absolute; left: 0; top: 7px; width: 5px; height: 5px; background: var(--gold); border-radius: 50%; }
-    .service-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--mid); }
-    .service-tag { font-family: Arial, sans-serif; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray); border: 1px solid var(--mid); padding: 3px 9px; }
-    .dealfolder-link { display: block; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--mid); font-family: Arial, sans-serif; font-size: 12px; color: var(--gray); line-height: 1.6; }
-    .dealfolder-link a { color: var(--gold); text-decoration: none; font-weight: bold; }
-    .dealfolder-link a:hover { text-decoration: underline; }
+  /* ── ABOUT (firm) ── */
+  .about-firm { background: var(--paper); }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    margin-top: 60px;
+  }
+  .about-stat-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-top: 48px;
+  }
+  .stat { border-top: var(--rule); padding-top: 20px; }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px; font-weight: 300;
+    color: var(--ink); line-height: 1;
+  }
+  .stat-label {
+    font-size: 10px; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--ash); margin-top: 6px;
+  }
+  .about-pillars { display: flex; flex-direction: column; gap: 24px; }
+  .pillar { display: flex; gap: 20px; align-items: flex-start; }
+  .pillar-mark {
+    width: 1px; background: var(--gold);
+    flex-shrink: 0; margin-top: 4px;
+    align-self: stretch; min-height: 40px;
+  }
+  .pillar-text strong {
+    display: block;
+    font-family: 'Jost', sans-serif;
+    font-weight: 500; font-size: 12px;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--ink); margin-bottom: 4px;
+  }
+  .pillar-text p { font-size: 14px; color: var(--slate); line-height: 1.6; }
 
-    /* ── DEALFOLDER BAND ── */
-    .dealfolder-band { background: var(--dark2); padding: 40px 48px; text-align: center; border-top: 2px solid var(--gold); border-bottom: 2px solid var(--gold); }
-    .dealfolder-band p { font-family: Arial, sans-serif; font-size: 14px; color: rgba(255,255,255,0.7); max-width: 680px; margin: 0 auto 20px; line-height: 1.7; }
-    .dealfolder-band p strong { color: var(--gold); }
-    .dealfolder-band a { display: inline-block; border: 1px solid var(--gold); color: var(--gold); font-family: Arial, sans-serif; font-size: 11px; font-weight: bold; letter-spacing: 0.1em; text-transform: uppercase; padding: 10px 28px; text-decoration: none; transition: all 0.2s; }
-    .dealfolder-band a:hover { background: var(--gold); color: var(--navy); }
+  /* ── SERVICES — accordion ── */
+  #services { background: var(--white); }
+  .services-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    margin-top: 60px;
+    background: #E8E6E0;
+  }
+  .service-card { background: var(--white); }
+  .service-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 28px 32px;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.2s;
+  }
+  .service-card-header:hover { background: var(--paper); }
+  .service-card.open .service-card-header { background: var(--paper); border-bottom: 1px solid #E8E6E0; }
+  .service-header-left { display: flex; align-items: flex-start; gap: 16px; }
+  .service-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px; font-style: italic;
+    color: var(--gold); flex-shrink: 0; padding-top: 3px;
+  }
+  .service-header-text {}
+  .service-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px; font-weight: 400;
+    color: var(--ink); margin-bottom: 4px; line-height: 1.2;
+  }
+  .service-sub {
+    font-size: 11px; letter-spacing: 0.1em;
+    color: var(--ash); font-family: 'Jost', sans-serif;
+  }
+  .service-chevron {
+    font-size: 10px; color: var(--gold);
+    flex-shrink: 0; transition: transform 0.25s; margin-left: 12px;
+  }
+  .service-card.open .service-chevron { transform: rotate(180deg); }
+  .service-card-body { display: none; padding: 28px 32px 32px 32px; }
+  .service-card.open .service-card-body { display: block; }
+  .service-card-body ul { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px; }
+  .service-card-body ul li {
+    font-size: 13px; color: var(--slate);
+    line-height: 1.6; padding-left: 16px; position: relative;
+  }
+  .service-card-body ul li::before {
+    content: ''; position: absolute;
+    left: 0; top: 8px;
+    width: 4px; height: 4px;
+    background: var(--gold); border-radius: 50%;
+  }
+  .service-tags {
+    display: flex; flex-wrap: wrap;
+    gap: 6px; margin-top: 16px;
+    padding-top: 16px; border-top: 1px solid #E8E6E0;
+  }
+  .service-tag {
+    font-size: 9px; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--ash);
+    border: 1px solid #E0DDD8; padding: 4px 10px;
+  }
+  .dealfolder-link {
+    margin-top: 16px; padding-top: 16px;
+    border-top: 1px solid #E8E6E0;
+    font-size: 12px; color: var(--ash); line-height: 1.7;
+  }
+  .dealfolder-link a {
+    color: var(--gold); font-weight: 500;
+    text-decoration: none; letter-spacing: 0.04em;
+  }
+  .dealfolder-link a:hover { border-bottom: 1px solid var(--gold); }
 
-    /* ── WHO WE SERVE ── */
-    .serve { background: var(--light); padding: 80px 48px; border-top: 1px solid var(--mid); }
-    .serve-inner { max-width: 1100px; margin: 0 auto; }
-    .serve-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--mid); border: 1px solid var(--mid); }
-    .serve-card { background: var(--white); padding: 32px 28px; }
-    .serve-card h3 { font-size: 16px; font-weight: bold; color: var(--navy); margin-bottom: 10px; border-bottom: 1px solid var(--gold); padding-bottom: 10px; }
-    .serve-card p { font-family: Arial, sans-serif; font-size: 13px; color: var(--gray); line-height: 1.65; }
+  /* ── DEALFOLDER BAND ── */
+  .dealfolder-band {
+    background: var(--ink);
+    padding: 48px;
+    text-align: center;
+    border-top: var(--rule);
+    border-bottom: var(--rule);
+  }
+  .dealfolder-band p {
+    font-family: 'Jost', sans-serif;
+    font-size: 14px; font-weight: 300;
+    color: rgba(255,255,255,0.65);
+    max-width: 680px; margin: 0 auto 24px; line-height: 1.8;
+  }
+  .dealfolder-band p strong { color: var(--gold-light); font-weight: 400; }
+  .dealfolder-band a {
+    display: inline-block;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    font-family: 'Jost', sans-serif;
+    font-size: 11px; font-weight: 400;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    padding: 10px 28px; text-decoration: none; transition: all 0.2s;
+  }
+  .dealfolder-band a:hover { background: var(--gold); color: var(--ink); }
 
-    /* ── LENDER / CMBS ── */
-    .lender { background: var(--dark2); padding: 80px 48px; border-top: 2px solid var(--gold); }
-    .lender-inner { max-width: 1100px; margin: 0 auto; }
-    .lender .section-title { color: var(--white); }
-    .lender-intro { font-family: Arial, sans-serif; font-size: 14px; color: rgba(255,255,255,0.6); max-width: 640px; margin-bottom: 48px; line-height: 1.7; }
-    .lender-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start; }
-    .lender-list { list-style: none; }
-    .lender-list li { display: grid; grid-template-columns: 28px 1fr; gap: 12px; padding: 18px 0; border-bottom: 1px solid rgba(255,255,255,0.07); align-items: start; }
-    .lender-list li .li-num { font-size: 13px; color: var(--gold); font-style: italic; padding-top: 1px; }
-    .lender-list li strong { display: block; font-family: Arial, sans-serif; font-size: 13px; font-weight: bold; color: var(--white); margin-bottom: 4px; }
-    .lender-list li p { font-family: Arial, sans-serif; font-size: 12px; color: rgba(255,255,255,0.45); line-height: 1.6; }
-    .lender-callout { background: rgba(201,168,76,0.07); border: 1px solid rgba(201,168,76,0.25); padding: 36px 32px; }
-    .lender-callout-label { font-family: Arial, sans-serif; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; display: block; }
-    .lender-callout h3 { font-size: 20px; font-weight: normal; color: var(--white); margin-bottom: 14px; line-height: 1.3; }
-    .lender-callout p { font-family: Arial, sans-serif; font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7; margin-bottom: 12px; }
-    .lender-callout a { display: inline-block; margin-top: 16px; font-family: Arial, sans-serif; font-size: 11px; font-weight: bold; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(201,168,76,0.4); padding-bottom: 2px; }
+  /* ── WHO WE SERVE ── */
+  .serve { background: var(--paper); }
+  .serve-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px; margin-top: 60px;
+  }
+  .serve-card { border-top: var(--rule); padding-top: 28px; }
+  .serve-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px; font-weight: 400;
+    color: var(--ink); margin-bottom: 12px;
+  }
+  .serve-body { font-size: 13px; color: var(--slate); line-height: 1.7; }
 
-    /* ── INDEPENDENT ADVISORY ── */
-    .independent { background: var(--white); padding: 80px 48px; border-top: 1px solid var(--mid); }
-    .independent-inner { max-width: 1100px; margin: 0 auto; }
-    .independent-intro { font-family: Arial, sans-serif; font-size: 14px; color: var(--gray); max-width: 640px; margin-bottom: 48px; line-height: 1.7; }
-    .independent-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--mid); border: 1px solid var(--mid); }
-    .ind-card { background: var(--white); padding: 32px 28px; }
-    .ind-label { font-family: Arial, sans-serif; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; display: block; }
-    .ind-card h3 { font-size: 16px; font-weight: bold; color: var(--navy); margin-bottom: 10px; }
-    .ind-card p { font-family: Arial, sans-serif; font-size: 13px; color: var(--gray); line-height: 1.65; }
+  /* ── LENDER / CMBS ── */
+  .lender { background: var(--ink); padding: 100px 48px; }
+  .lender .section-title { color: var(--white); }
+  .lender .section-body { color: rgba(255,255,255,0.55); }
+  .lender .section-label { color: var(--gold-light); }
+  .lender .gold-rule { background: linear-gradient(90deg, var(--gold-light) 0%, transparent 100%); }
+  .lender-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 64px; margin-top: 60px; align-items: start;
+  }
+  .lender-list { list-style: none; display: flex; flex-direction: column; }
+  .lender-list li {
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    display: grid; grid-template-columns: 24px 1fr;
+    gap: 16px; align-items: start;
+  }
+  .li-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px; color: var(--gold);
+    font-style: italic; padding-top: 1px;
+  }
+  .li-text strong {
+    display: block; font-size: 13px; font-weight: 500;
+    letter-spacing: 0.06em; color: var(--white); margin-bottom: 4px;
+  }
+  .li-text p { font-size: 12px; color: rgba(255,255,255,0.45); line-height: 1.6; }
+  .lender-callout {
+    background: rgba(184,150,62,0.08);
+    border: 1px solid rgba(184,150,62,0.25);
+    padding: 40px;
+  }
+  .lender-callout-label {
+    font-size: 10px; letter-spacing: 0.26em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 20px; display: block;
+  }
+  .lender-callout-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px; font-weight: 300;
+    color: var(--white); line-height: 1.2; margin-bottom: 16px;
+  }
+  .lender-callout-body {
+    font-size: 13px; color: rgba(255,255,255,0.5);
+    line-height: 1.7; margin-bottom: 12px;
+  }
+  .lender-callout a {
+    display: inline-block; margin-top: 8px;
+    font-size: 11px; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--gold);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(184,150,62,0.3);
+    padding-bottom: 2px; transition: border-color 0.2s;
+  }
+  .lender-callout a:hover { border-color: var(--gold); }
 
-    /* ── FEES ── */
-    .fees { background: var(--navy); padding: 64px 48px; }
-    .fees-inner { max-width: 1100px; margin: 0 auto; }
-    .fees .section-title { color: var(--white); margin-bottom: 36px; }
-    .fees-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-    .fee-card { background: var(--dark2); padding: 28px 24px; border-left: 3px solid var(--gold); }
-    .fee-card h4 { font-family: Arial, sans-serif; font-size: 13px; font-weight: bold; color: var(--gold); margin-bottom: 10px; }
-    .fee-card p { font-family: Arial, sans-serif; font-size: 12.5px; color: rgba(255,255,255,0.6); line-height: 1.6; }
-    .fees-note { font-family: Arial, sans-serif; font-size: 11px; color: rgba(255,255,255,0.35); margin-top: 24px; text-align: center; }
+  /* ── INDEPENDENT ADVISORY ── */
+  .independent { background: var(--white); padding: 100px 48px; }
+  .independent-inner { max-width: 900px; margin: 0 auto; text-align: center; }
+  .independent .section-title {
+    font-size: clamp(36px, 5vw, 56px);
+    max-width: 700px; margin: 0 auto 28px;
+  }
+  .independent .section-body { max-width: 560px; margin: 0 auto 48px; }
+  .independent-pillars {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 2px; margin-top: 64px;
+    background: #E8E6E0; text-align: left;
+  }
+  .ind-pillar { background: var(--white); padding: 36px 32px; }
+  .ind-pillar-label {
+    font-size: 10px; letter-spacing: 0.26em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 16px; display: block;
+  }
+  .ind-pillar-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px; color: var(--ink); margin-bottom: 10px;
+  }
+  .ind-pillar-body { font-size: 13px; color: var(--slate); line-height: 1.6; }
 
-    /* ── CASE STUDIES ── */
-    .case-study { padding: 80px 48px; background: var(--light); border-top: 1px solid var(--mid); }
-    .case-study-inner { max-width: 1100px; margin: 0 auto; }
-    .case-study-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: var(--mid); border: 1px solid var(--mid); }
-    .cs-placeholder { background: var(--white); padding: 48px 32px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; min-height: 220px; }
-    .cs-placeholder p { font-family: Arial, sans-serif; font-size: 13px; color: var(--mid); font-style: italic; }
+  /* ── FEES ── */
+  .fees { background: var(--ink); padding: 100px 48px; }
+  .fees .section-title { color: var(--white); }
+  .fees .section-body { color: rgba(255,255,255,0.55); }
+  .fees .section-label { color: var(--gold-light); }
+  .fees .gold-rule { background: linear-gradient(90deg, var(--gold-light) 0%, transparent 100%); }
+  .fees-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 2px; margin-top: 48px; background: rgba(255,255,255,0.04);
+  }
+  .fee-card {
+    background: rgba(255,255,255,0.04);
+    border-left: 2px solid var(--gold);
+    padding: 36px 28px;
+  }
+  .fee-card h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px; font-weight: 400;
+    color: var(--gold-light); margin-bottom: 14px;
+  }
+  .fee-card p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7; }
+  .fees-note {
+    font-size: 11px; color: rgba(255,255,255,0.3);
+    margin-top: 28px; text-align: center; letter-spacing: 0.04em;
+  }
 
-    /* ── PARTNERS ── */
-    .partners { padding: 64px 48px; border-top: 1px solid var(--mid); }
-    .partners-inner { max-width: 1100px; margin: 0 auto; text-align: center; }
-    .partners .section-title { margin-bottom: 12px; }
-    .partners-sub { font-family: Arial, sans-serif; font-size: 13px; color: var(--gray); margin-bottom: 48px; }
-    .partners-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; background: var(--mid); border: 1px solid var(--mid); }
-    .partner-placeholder { background: var(--white); padding: 36px 20px; display: flex; align-items: center; justify-content: center; min-height: 90px; }
-    .partner-placeholder p { font-family: Arial, sans-serif; font-size: 12px; color: var(--mid); font-style: italic; }
+  /* ── CASE STUDIES ── */
+  .case-study { background: var(--paper); padding: 100px 48px; }
+  .case-study-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 2px; background: #E8E6E0; margin-top: 48px;
+  }
+  .cs-placeholder {
+    background: var(--white); padding: 48px 32px;
+    display: flex; align-items: center; justify-content: center;
+    text-align: center; min-height: 220px;
+  }
+  .cs-placeholder p { font-size: 13px; color: #D0CCC6; font-style: italic; }
 
-    /* ── ABOUT / BIO ── */
-    .about { padding: 80px 48px; background: var(--light); border-top: 1px solid var(--mid); }
-    .about-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 380px 1fr; gap: 64px; align-items: start; }
-    .bio-photo-wrap { position: relative; }
-    .bio-photo { width: 100%; aspect-ratio: 3/4; overflow: hidden; position: relative; background: var(--navy); }
-    .bio-photo img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.45s ease; }
-    .bio-photo img.active { opacity: 1; }
-    .bio-photo img.default-photo { opacity: 1; }
-    .bio-photo img.default-photo.hidden { opacity: 0; }
-    .bio-photo-caption { font-family: Arial, sans-serif; font-size: 11px; color: var(--gray); text-align: center; margin-top: 10px; font-style: italic; min-height: 18px; }
-    .bio-name { font-size: 18px; font-weight: bold; color: var(--navy); margin-top: 14px; }
-    .bio-title { font-family: Arial, sans-serif; font-size: 12px; color: var(--gray); margin-top: 4px; }
-    .about-text h2 { font-size: 28px; font-weight: normal; margin-bottom: 24px; }
-    .bio-body { font-family: Arial, sans-serif; font-size: 14px; color: var(--gray); line-height: 1.85; margin-bottom: 32px; }
-    .bio-body p { margin-bottom: 18px; }
-    .bio-keyword { color: var(--gold); font-weight: bold; cursor: default; border-bottom: 1px dotted var(--gold); transition: color 0.2s; display: inline-block; }
-    .bio-keyword:hover { color: var(--navy); }
-    .about-credentials { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: var(--mid); border: 1px solid var(--mid); }
-    .cred-box { background: var(--white); padding: 20px; }
-    .cred-val { font-size: 26px; color: var(--navy); display: block; margin-bottom: 4px; }
-    .cred-label { font-family: Arial, sans-serif; font-size: 11px; color: var(--gray); line-height: 1.4; }
+  /* ── PARTNERS ── */
+  .partners { background: var(--white); padding: 80px 48px; border-top: 1px solid #E8E6E0; }
+  .partners-inner { max-width: 1100px; margin: 0 auto; text-align: center; }
+  .partners-sub { font-size: 13px; color: var(--ash); margin-bottom: 48px; margin-top: 8px; }
+  .partners-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 2px; background: #E8E6E0;
+  }
+  .partner-placeholder {
+    background: var(--white); padding: 36px 20px;
+    display: flex; align-items: center; justify-content: center; min-height: 90px;
+  }
+  .partner-placeholder p { font-size: 12px; color: #D0CCC6; font-style: italic; }
 
-    /* ── CONTACT ── */
-    .contact { background: var(--navy); padding: 80px 48px; }
-    .contact-inner { max-width: 600px; margin: 0 auto; text-align: center; }
-    .contact .section-label { color: var(--gold); }
-    .contact h2 { font-size: 28px; font-weight: normal; color: var(--white); margin-bottom: 16px; }
-    .contact p { font-family: Arial, sans-serif; font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.7; margin-bottom: 36px; }
-    .contact-details { display: flex; justify-content: center; gap: 48px; margin-bottom: 36px; }
-    .contact-item .label { font-family: Arial, sans-serif; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
-    .contact-item a, .contact-item span { font-family: Arial, sans-serif; font-size: 14px; color: var(--white); text-decoration: none; font-weight: bold; }
-    .contact-item a:hover { color: var(--gold); }
-    .contact-cta { display: inline-block; background: var(--gold); color: var(--navy); font-family: Arial, sans-serif; font-size: 12px; font-weight: bold; letter-spacing: 0.1em; text-transform: uppercase; padding: 14px 36px; text-decoration: none; transition: opacity 0.2s; }
-    .contact-cta:hover { opacity: 0.85; }
+  /* ── ABOUT / BIO ── */
+  .about-bio { background: var(--paper); padding: 100px 48px; }
+  .about-bio-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: 360px 1fr;
+    gap: 72px; align-items: start;
+  }
 
-    /* ── FOOTER ── */
-    footer { background: var(--dark2); padding: 32px 48px; display: flex; justify-content: space-between; align-items: center; border-top: 2px solid var(--gold); }
-    .footer-logo img { height: 48px; display: block; }
-    footer p { font-family: Arial, sans-serif; font-size: 11px; color: rgba(255,255,255,0.35); }
+  /* Photo hover */
+  .bio-photo-wrap { position: relative; }
+  .bio-photo {
+    width: 100%; aspect-ratio: 3/4;
+    overflow: hidden; position: relative;
+    background: var(--ink);
+  }
+  .bio-photo img {
+    position: absolute; top: 0; left: 0;
+    width: 100%; height: 100%; object-fit: cover;
+    opacity: 0; transition: opacity 0.45s ease;
+  }
+  .bio-photo img.active { opacity: 1; }
+  .bio-photo img.default-photo { opacity: 1; }
+  .bio-photo img.default-photo.hidden { opacity: 0; }
+  .bio-photo-caption {
+    font-family: 'Jost', sans-serif;
+    font-size: 11px; color: var(--ash);
+    text-align: center; margin-top: 10px;
+    font-style: italic; min-height: 18px;
+    letter-spacing: 0.06em;
+  }
+  .bio-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px; font-weight: 400;
+    color: var(--ink); margin-top: 16px;
+  }
+  .bio-title {
+    font-size: 11px; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--ash); margin-top: 6px;
+  }
 
-    /* ── RESPONSIVE ── */
-    @media (max-width: 900px) {
-      .about-inner { grid-template-columns: 1fr; }
-      .lender-grid { grid-template-columns: 1fr; }
-      .serve-grid { grid-template-columns: 1fr 1fr; }
-      .independent-grid { grid-template-columns: 1fr; }
-    }
-    @media (max-width: 768px) {
-      nav { padding: 0 20px; } .nav-links { display: none; }
-      .hero, .services, .fees, .case-study, .partners, .about, .contact,
-      .serve, .lender, .independent { padding: 48px 24px; }
-      .services-grid, .fees-grid, .case-study-grid, .partners-grid,
-      .about-credentials, .serve-grid { grid-template-columns: 1fr; }
-      footer { flex-direction: column; gap: 16px; text-align: center; }
-    }
-  </style>
+  /* Bio text */
+  .about-text {}
+  .about-text .section-title { margin-bottom: 28px; }
+  .bio-body {
+    font-size: 14px; color: var(--slate);
+    line-height: 1.9; margin-bottom: 40px;
+  }
+  .bio-body p { margin-bottom: 18px; }
+  .bio-keyword {
+    color: var(--gold); font-weight: 400;
+    cursor: default;
+    border-bottom: 1px dotted var(--gold);
+    transition: color 0.2s; display: inline;
+  }
+  .bio-keyword:hover { color: var(--ink); }
+
+  /* Credentials grid */
+  .about-credentials {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 2px; background: #E8E6E0;
+  }
+  .cred-box { background: var(--white); padding: 24px; }
+  .cred-val {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px; font-weight: 300;
+    color: var(--ink); display: block; margin-bottom: 6px;
+  }
+  .cred-label {
+    font-size: 11px; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--ash); line-height: 1.4;
+  }
+
+  /* ── CONTACT ── */
+  .contact { background: var(--paper); padding: 100px 48px; }
+  .contact-inner { max-width: 700px; margin: 0 auto; text-align: center; }
+  .contact-form {
+    display: flex; flex-direction: column;
+    gap: 16px; margin-top: 48px; text-align: left;
+  }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+  .form-group label {
+    font-size: 10px; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--ash);
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    font-family: 'Jost', sans-serif;
+    font-size: 14px; font-weight: 300;
+    color: var(--ink); background: var(--white);
+    border: 1px solid #DDD9D2;
+    padding: 12px 16px; outline: none;
+    transition: border-color 0.2s; -webkit-appearance: none;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus { border-color: var(--gold); }
+  .form-group textarea { height: 120px; resize: vertical; }
+  .form-submit {
+    font-family: 'Jost', sans-serif;
+    font-size: 11px; font-weight: 400;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--white); background: var(--ink);
+    border: none; padding: 16px 40px;
+    cursor: pointer; transition: background 0.2s; align-self: flex-start;
+  }
+  .form-submit:hover { background: var(--gold); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink); padding: 48px;
+    display: flex; align-items: center;
+    justify-content: space-between;
+    border-top: var(--rule);
+  }
+  .footer-logo img { height: 52px; display: block; }
+  .footer-links {
+    display: flex; gap: 28px; list-style: none;
+  }
+  .footer-links a {
+    font-size: 11px; letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--gold); }
+  .footer-copy {
+    font-size: 11px; color: rgba(255,255,255,0.25);
+    letter-spacing: 0.08em;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    section, .lender, .independent, .fees, .contact, .about-bio, .about-firm, .case-study, .partners { padding: 72px 24px; }
+    .about-grid { grid-template-columns: 1fr; gap: 48px; }
+    .about-bio-inner { grid-template-columns: 1fr; }
+    .services-grid { grid-template-columns: 1fr; }
+    .serve-grid { grid-template-columns: 1fr 1fr; }
+    .independent-pillars { grid-template-columns: 1fr; }
+    .lender-grid { grid-template-columns: 1fr; }
+    .fees-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 24px; text-align: center; }
+    .footer-links { flex-wrap: wrap; justify-content: center; }
+  }
+  @media (max-width: 600px) {
+    .serve-grid { grid-template-columns: 1fr; }
+    .hero { padding: 100px 24px 60px; }
+    .case-study-grid, .partners-grid { grid-template-columns: 1fr; }
+  }
+</style>
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav>
-    <div class="nav-logo">
-      <img src="mcllogoprimarydarkweb.png" alt="MCL Advisors" />
-    </div>
-    <div class="nav-links">
-      <a href="#services">Services</a>
-      <a href="#serve">Who We Serve</a>
-      <a href="#fees">Fees</a>
-      <a href="#about">About</a>
-      <a href="#contact" class="nav-cta">Contact</a>
-    </div>
-  </nav>
-
-  <!-- HERO -->
-  <section class="hero">
-    <p class="hero-eyebrow">Hospitality Deal Advisory</p>
-    <h1>Advisory across the full <em>hotel deal lifecycle</em></h1>
-    <p class="hero-sub">We work with hotel investors, owners, and operators navigating transactions, capital events, and every stage of asset ownership.</p>
-    <a href="#contact" class="hero-cta">Start a Conversation</a>
-  </section>
-
-  <div class="positioning">
-    <p>From acquisition to disposition — and everything between. Transaction advisory, operator selection, ongoing investment management, and asset intelligence, structured to the deal.</p>
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <img src="mcllogoprimarydarkweb.png" alt="MCL Advisors" />
   </div>
+  <ul class="nav-links">
+    <li><a href="#about-firm">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#serve">Who We Serve</a></li>
+    <li><a href="#fees">Fees</a></li>
+    <li><a href="#about-bio">Michael</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Get in Touch</a>
+</nav>
 
-  <!-- SERVICES -->
-  <section class="services" id="services">
-    <p class="section-label">What We Do</p>
-    <h2 class="section-title">Advisory Services</h2>
+<!-- HERO -->
+<section class="hero" id="top">
+  <span class="hero-eyebrow">Hospitality Deal Advisory</span>
+
+  <svg class="hero-tree" viewBox="0 0 80 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <line x1="40" y1="0" x2="40" y2="120" stroke="#B8963E" stroke-width="1.5"/>
+    <line x1="40" y1="10" x2="20" y2="22" stroke="#B8963E" stroke-width="1.2"/>
+    <line x1="40" y1="10" x2="60" y2="22" stroke="#B8963E" stroke-width="1.2"/>
+    <line x1="40" y1="22" x2="16" y2="36" stroke="#B8963E" stroke-width="1.2"/>
+    <line x1="40" y1="22" x2="64" y2="36" stroke="#B8963E" stroke-width="1.2"/>
+    <line x1="40" y1="36" x2="12" y2="52" stroke="#1A1A18" stroke-width="1.2"/>
+    <line x1="40" y1="36" x2="68" y2="52" stroke="#1A1A18" stroke-width="1.2"/>
+    <line x1="40" y1="52" x2="8" y2="70" stroke="#1A1A18" stroke-width="1.2"/>
+    <line x1="40" y1="52" x2="72" y2="70" stroke="#1A1A18" stroke-width="1.2"/>
+    <line x1="40" y1="70" x2="4" y2="92" stroke="#1A1A18" stroke-width="1.2"/>
+    <line x1="40" y1="70" x2="76" y2="92" stroke="#1A1A18" stroke-width="1.2"/>
+    <line x1="40" y1="92" x2="0" y2="116" stroke="#1A1A18" stroke-width="1.2"/>
+    <line x1="40" y1="92" x2="80" y2="116" stroke="#1A1A18" stroke-width="1.2"/>
+  </svg>
+
+  <h1 class="hero-headline">Advisory across the full<br><em>hotel deal lifecycle</em></h1>
+  <p class="hero-sub">We work with hotel investors, owners, and operators navigating transactions, capital events, and every stage of asset ownership.</p>
+  <div class="hero-divider"></div>
+  <div style="opacity:0;animation:fadeUp 1s ease 0.8s forwards;">
+    <a href="#services" class="btn-primary">Explore Services</a>
+    <a href="#contact" class="btn-ghost">Start a Conversation</a>
+  </div>
+</section>
+
+<!-- POSITIONING BAND -->
+<div class="positioning">
+  <p>From acquisition to disposition — and everything between. Transaction advisory, operator selection, ongoing investment management, and asset intelligence, structured to the deal.</p>
+</div>
+
+<!-- ABOUT FIRM -->
+<section class="about-firm" id="about-firm">
+  <div class="section-inner">
+    <div class="gold-rule"></div>
+    <span class="section-label">Who We Are</span>
+    <div class="about-grid">
+      <div>
+        <h2 class="section-title">Fluent in both <em>operations</em> and capital markets.</h2>
+        <p class="section-body">MCL Advisors brings operator-level hospitality intelligence to every engagement — from pre-acquisition diligence to distressed asset workouts. We work where spreadsheets alone fall short: understanding what a hotel actually is, how it performs, and what it can become.</p>
+        <p class="section-body" style="margin-top:16px;">Our independence is our edge. We have no mandate to sell, no flag to plant. We advise.</p>
+        <div class="about-stat-row">
+          <div class="stat">
+            <div class="stat-num">$3.5B+</div>
+            <div class="stat-label">Transaction Volume</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">80+</div>
+            <div class="stat-label">Hotel Assets Overseen</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">40+</div>
+            <div class="stat-label">Management Contracts</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">15 Yrs</div>
+            <div class="stat-label">Senior Experience</div>
+          </div>
+        </div>
+      </div>
+      <div class="about-pillars">
+        <div class="pillar">
+          <div class="pillar-mark"></div>
+          <div class="pillar-text">
+            <strong>Operator Perspective</strong>
+            <p>We've been in the buildings. We know what a flag looks like on paper and what it costs to live under one.</p>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-mark"></div>
+          <div class="pillar-text">
+            <strong>Transaction Fluency</strong>
+            <p>From OM preparation to closing support, we step in at any point in the deal process and get it moving.</p>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-mark"></div>
+          <div class="pillar-text">
+            <strong>Independent Voice</strong>
+            <p>No brokerage affiliation. No brand allegiance. Our conclusions are ours — and yours to rely on.</p>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-mark"></div>
+          <div class="pillar-text">
+            <strong>Lender Literacy</strong>
+            <p>We speak the language of special servicers, CMBS trustees, and credit committees — translating hospitality complexity into capital terms.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-inner">
+    <div class="gold-rule"></div>
+    <span class="section-label">Advisory Services</span>
+    <h2 class="section-title">What we do.</h2>
+    <p class="section-body">Engagements are scoped to your need — full-cycle or surgical. No retainers for things you don't need.</p>
+
     <div class="services-grid">
 
-      <!-- 01 Transaction Advisory -->
       <div class="service-card" id="card-1">
         <div class="service-card-header" onclick="toggleCard('card-1')">
           <div class="service-header-left">
             <span class="service-num">01</span>
             <div class="service-header-text">
-              <h3>Transaction Advisory</h3>
-              <p class="service-sub">Critical Path · Diligence · Disposition · Refinance · M&A</p>
+              <div class="service-title">Transaction Advisory</div>
+              <div class="service-sub">Critical Path · Diligence · Disposition · Refinance · M&A</div>
             </div>
           </div>
           <span class="service-chevron">▼</span>
@@ -263,21 +813,21 @@
             <li><b>M&A & Capital Events</b> — Portfolio-level transaction support, JV structuring, and advisory through complex multi-asset or corporate-level deals.</li>
           </ul>
           <div class="dealfolder-link">
-            Manage your deal with <strong>DealFolder Transaction Mode</strong> — Critical Path tracking, Diligence Tracker, and deal room in one place.
-            <br><a href="https://deal-folder.vercel.app" target="_blank">Open Diligence Tracker →</a>
-            &nbsp;&nbsp;<a href="https://deal-folder.vercel.app" target="_blank">Open Critical Path →</a>
+            Manage your deal in <strong>DealFolder Transaction Mode</strong> — Critical Path tracking, Diligence Tracker, and deal room in one place.<br>
+            <a href="https://deal-folder.vercel.app" target="_blank">Open Diligence Tracker →</a>
+            &nbsp;&nbsp;
+            <a href="https://deal-folder.vercel.app" target="_blank">Open Critical Path →</a>
           </div>
         </div>
       </div>
 
-      <!-- 02 Operator & Brand -->
       <div class="service-card" id="card-2">
         <div class="service-card-header" onclick="toggleCard('card-2')">
           <div class="service-header-left">
             <span class="service-num">02</span>
             <div class="service-header-text">
-              <h3>Operator & Brand Selection</h3>
-              <p class="service-sub">Management Search · Contract Negotiation · Flag Strategy</p>
+              <div class="service-title">Operator & Brand Selection</div>
+              <div class="service-sub">Management Search · Contract Negotiation · Flag Strategy</div>
             </div>
           </div>
           <span class="service-chevron">▼</span>
@@ -292,14 +842,13 @@
         </div>
       </div>
 
-      <!-- 03 Investment Management -->
       <div class="service-card" id="card-3">
         <div class="service-card-header" onclick="toggleCard('card-3')">
           <div class="service-header-left">
             <span class="service-num">03</span>
             <div class="service-header-text">
-              <h3>Ongoing Investment Management</h3>
-              <p class="service-sub">Portfolio Oversight · Performance Monitoring · Capital Planning</p>
+              <div class="service-title">Ongoing Investment Management</div>
+              <div class="service-sub">Portfolio Oversight · Performance Monitoring · Capital Planning</div>
             </div>
           </div>
           <span class="service-chevron">▼</span>
@@ -314,14 +863,13 @@
         </div>
       </div>
 
-      <!-- 04 Asset Intelligence -->
       <div class="service-card" id="card-4">
         <div class="service-card-header" onclick="toggleCard('card-4')">
           <div class="service-header-left">
             <span class="service-num">04</span>
             <div class="service-header-text">
-              <h3>Asset Intelligence & Data</h3>
-              <p class="service-sub">Market Diligence · Comp Analysis · Tours · Document Abstraction · AI</p>
+              <div class="service-title">Asset Intelligence & Data</div>
+              <div class="service-sub">Market Diligence · Comp Analysis · Tours · Document Abstraction</div>
             </div>
           </div>
           <span class="service-chevron">▼</span>
@@ -340,14 +888,13 @@
         </div>
       </div>
 
-      <!-- 05 Transaction Support for Brokers -->
       <div class="service-card" id="card-5">
         <div class="service-card-header" onclick="toggleCard('card-5')">
           <div class="service-header-left">
             <span class="service-num">05</span>
             <div class="service-header-text">
-              <h3>Transaction Support for Brokers</h3>
-              <p class="service-sub">Diligence Cleanup · OM Preparation · Closing Support</p>
+              <div class="service-title">Transaction Support for Brokers</div>
+              <div class="service-sub">Diligence Cleanup · OM Preparation · Closing Support</div>
             </div>
           </div>
           <span class="service-chevron">▼</span>
@@ -367,14 +914,13 @@
         </div>
       </div>
 
-      <!-- 06 Lender & Special Servicer -->
       <div class="service-card" id="card-6">
         <div class="service-card-header" onclick="toggleCard('card-6')">
           <div class="service-header-left">
             <span class="service-num">06</span>
             <div class="service-header-text">
-              <h3>Lender & Special Servicer Advisory</h3>
-              <p class="service-sub">Troubled Assets · CMBS · Workout Strategy · Receivership</p>
+              <div class="service-title">Lender & Special Servicer Advisory</div>
+              <div class="service-sub">Troubled Assets · CMBS · Workout Strategy · Receivership</div>
             </div>
           </div>
           <span class="service-chevron">▼</span>
@@ -397,262 +943,327 @@
       </div>
 
     </div>
-  </section>
-
-  <!-- DEALFOLDER BAND -->
-  <div class="dealfolder-band">
-    <p><strong>Introducing DealFolder</strong> — the asset intelligence platform built specifically for hotel investors. One permanent folder per asset, AI-powered document analysis, and institutional memory that transfers with the deal.</p>
-    <a href="https://deal-folder.vercel.app" target="_blank">See it in action →</a>
   </div>
+</section>
 
-  <!-- WHO WE SERVE -->
-  <section class="serve" id="serve">
-    <div class="serve-inner">
-      <p class="section-label">Who We Serve</p>
-      <h2 class="section-title">Built for the people in the deal.</h2>
-      <div class="serve-grid">
-        <div class="serve-card">
-          <h3>Brands & Flags</h3>
-          <p>Conversion feasibility, franchisee evaluation, and market positioning to support brand growth decisions with operational grounding.</p>
+<!-- DEALFOLDER BAND -->
+<div class="dealfolder-band">
+  <p><strong>Introducing DealFolder</strong> — the asset intelligence platform built specifically for hotel investors. One permanent folder per asset, AI-powered document analysis, and institutional memory that transfers with the deal.</p>
+  <a href="https://deal-folder.vercel.app" target="_blank">See it in action →</a>
+</div>
+
+<!-- WHO WE SERVE -->
+<section class="serve" id="serve">
+  <div class="section-inner">
+    <div class="gold-rule"></div>
+    <span class="section-label">Who We Serve</span>
+    <h2 class="section-title">Built for the people <em>in</em> the deal.</h2>
+    <p class="section-body">We engage across the full ecosystem — every party at the table has a different need, and we know how to meet each one.</p>
+    <div class="serve-grid">
+      <div class="serve-card">
+        <div class="serve-title">Brands & Flags</div>
+        <p class="serve-body">Conversion feasibility, franchisee evaluation, and market positioning to support brand growth decisions with operational grounding.</p>
+      </div>
+      <div class="serve-card">
+        <div class="serve-title">Brokers</div>
+        <p class="serve-body">Diligence cleanup, OM preparation, and closing support for brokers who need hospitality depth without adding headcount. White-label available.</p>
+      </div>
+      <div class="serve-card">
+        <div class="serve-title">Lenders & Special Servicers</div>
+        <p class="serve-body">Asset evaluation, workout strategy, and disposition support for troubled hotel loans — including CMBS and bridge scenarios.</p>
+      </div>
+      <div class="serve-card">
+        <div class="serve-title">Buyers & Investors</div>
+        <p class="serve-body">Pre-acquisition diligence, comp analysis, market studies, and brand evaluation before capital is committed.</p>
+      </div>
+      <div class="serve-card">
+        <div class="serve-title">Public Entities</div>
+        <p class="serve-body">Feasibility analysis, developer evaluation, and market studies for municipalities, authorities, and public-private partnerships.</p>
+      </div>
+      <div class="serve-card">
+        <div class="serve-title">Advisors & Counsel</div>
+        <p class="serve-body">Expert hospitality opinion for legal, financial, or restructuring advisors who need a credible, independent operator perspective.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LENDER / CMBS -->
+<section class="lender" id="lender">
+  <div class="section-inner">
+    <div class="gold-rule"></div>
+    <span class="section-label">Lender & Special Servicer Advisory</span>
+    <h2 class="section-title">Hospitality expertise for <em>troubled situations.</em></h2>
+    <p class="section-body">CMBS special servicers and lenders face hotel problems they weren't built to solve. We provide the operational expertise to understand what you're holding — and what to do with it.</p>
+    <div class="lender-grid">
+      <ul class="lender-list">
+        <li><span class="li-num">i.</span><div class="li-text"><strong>Asset Assessment</strong><p>Independent operational and market review of the collateral. Is this hotel worth saving, repositioning, or disposing of?</p></div></li>
+        <li><span class="li-num">ii.</span><div class="li-text"><strong>Borrower Evaluation</strong><p>Separating the asset problem from the operator problem — critical before deciding on a workout path.</p></div></li>
+        <li><span class="li-num">iii.</span><div class="li-text"><strong>Workout Strategy</strong><p>Deed-in-lieu, note sale, receivership, brand or management change — we help structure the right path given the asset's reality.</p></div></li>
+        <li><span class="li-num">iv.</span><div class="li-text"><strong>Receivership Support</strong><p>Expert hospitality advisor to the receiver or the court — providing operational grounding through the process.</p></div></li>
+        <li><span class="li-num">v.</span><div class="li-text"><strong>Disposition Readiness</strong><p>If you're selling the note or the asset, we help prepare it — diligence, positioning, and buyer-facing materials.</p></div></li>
+      </ul>
+      <div class="lender-callout">
+        <span class="lender-callout-label">Why MCL for CMBS</span>
+        <div class="lender-callout-title">Most special servicers don't have hospitality depth in-house.</div>
+        <p class="lender-callout-body">Hotels are operationally complex collateral. A room count and an STR report don't tell you whether the management team is the problem, whether the flag is right for the market, or what a realistic stabilization timeline looks like.</p>
+        <p class="lender-callout-body">MCL speaks both languages — the real estate finance side and the operator side — which is rare. That's the gap we fill.</p>
+        <a href="#contact">Discuss a Situation →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INDEPENDENT ADVISORY -->
+<section class="independent" id="independent">
+  <div class="independent-inner">
+    <div class="gold-rule"></div>
+    <span class="section-label" style="display:block;margin-bottom:16px;">Third-Party & Independent Advisory</span>
+    <h2 class="section-title">When you need a voice with no agenda.</h2>
+    <p class="section-body">In complex transactions, the most valuable advisor in the room is often the one who owes nothing to any party. MCL Advisors serves as an independent third-party opinion when the deal needs a credible, unconflicted read.</p>
+    <div class="independent-pillars">
+      <div class="ind-pillar">
+        <span class="ind-pillar-label">Dispute & Disagreement</span>
+        <div class="ind-pillar-title">When parties can't agree on value or viability</div>
+        <p class="ind-pillar-body">We provide independent operational and market analysis that both sides can reference — with full transparency on our methodology.</p>
+      </div>
+      <div class="ind-pillar">
+        <span class="ind-pillar-label">Lender vs. Borrower</span>
+        <div class="ind-pillar-title">Asset assessment in troubled situations</div>
+        <p class="ind-pillar-body">When a workout requires clarity on what the asset is actually worth — and what it would cost to fix — we deliver the honest read.</p>
+      </div>
+      <div class="ind-pillar">
+        <span class="ind-pillar-label">Multi-Party Transactions</span>
+        <div class="ind-pillar-title">Brands, investors, and operators at the same table</div>
+        <p class="ind-pillar-body">We help complex deals move forward by providing a shared, expert frame of reference no single party could credibly provide on their own.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEES -->
+<section class="fees" id="fees">
+  <div class="section-inner">
+    <div class="gold-rule"></div>
+    <span class="section-label">How We Work</span>
+    <h2 class="section-title">Fee structure.</h2>
+    <p class="section-body">All engagements are fixed-fee and scoped in advance — no open-ended hourly billing.</p>
+    <div class="fees-grid">
+      <div class="fee-card">
+        <h4>Model A — Fixed Fee</h4>
+        <p>Flat, scoped upfront. Best for defined engagements: diligence support, data room preparation, refi packages with a clear end point.</p>
+      </div>
+      <div class="fee-card">
+        <h4>Model B — Fixed + Success Fee</h4>
+        <p>Modest fixed fee through diligence, plus a negotiated percentage at close. Fixed fee credited at closing. Most common structure.</p>
+      </div>
+      <div class="fee-card">
+        <h4>Model C — Monthly Retainer</h4>
+        <p>Fixed monthly for ongoing pipeline coverage and portfolio oversight. Best for investors with active deal flow across multiple assets.</p>
+      </div>
+    </div>
+    <p class="fees-note">Fees for transaction engagements are structured to the deal and charged at closing. Pricing confirmed in the scoping call.</p>
+  </div>
+</section>
+
+<!-- CASE STUDIES -->
+<section class="case-study" id="case-study">
+  <div class="section-inner">
+    <div class="gold-rule"></div>
+    <span class="section-label">Work</span>
+    <h2 class="section-title">Case studies.</h2>
+    <div class="case-study-grid">
+      <div class="cs-placeholder"><p>Case study coming soon</p></div>
+      <div class="cs-placeholder"><p>Case study coming soon</p></div>
+      <div class="cs-placeholder"><p>Case study coming soon</p></div>
+      <div class="cs-placeholder"><p>Case study coming soon</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PARTNERS -->
+<section class="partners" id="partners">
+  <div class="partners-inner">
+    <span class="section-label">Relationships</span>
+    <h2 class="section-title" style="font-size:clamp(24px,3vw,36px);margin-bottom:8px;">Trusted Partners & Networks</h2>
+    <p class="partners-sub">Built over 15 years at the intersection of hotel investment, operations, and capital markets.</p>
+    <div class="partners-grid">
+      <div class="partner-placeholder"><p>Partner coming soon</p></div>
+      <div class="partner-placeholder"><p>Partner coming soon</p></div>
+      <div class="partner-placeholder"><p>Partner coming soon</p></div>
+      <div class="partner-placeholder"><p>Partner coming soon</p></div>
+      <div class="partner-placeholder"><p>Partner coming soon</p></div>
+      <div class="partner-placeholder"><p>Partner coming soon</p></div>
+      <div class="partner-placeholder"><p>Partner coming soon</p></div>
+      <div class="partner-placeholder"><p>Partner coming soon</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT / BIO -->
+<section class="about-bio" id="about-bio">
+  <div class="about-bio-inner">
+    <div class="bio-photo-wrap">
+      <div class="bio-photo" id="bioPhoto">
+        <img src="photos/photo-default.jpg"  id="img-default"  class="default-photo" alt="Michael Yousif" />
+        <img src="photos/photo-family.jpg"   id="img-family"   alt="Family" />
+        <img src="photos/photo-pizza.jpg"    id="img-pizza"    alt="Pizza night" />
+        <img src="photos/photo-beatles.jpg"  id="img-beatles"  alt="Beatles birthday" />
+        <img src="photos/photo-travel.jpg"   id="img-travel"   alt="Grand Hotel Mackinac" />
+        <img src="photos/photo-birding.jpg"  id="img-birding"  alt="Bald eagle" />
+        <img src="photos/photo-ski.jpg"      id="img-ski"      alt="Up north skiing" />
+      </div>
+      <div class="bio-photo-caption" id="photoCaption"></div>
+      <div class="bio-name">Michael Yousif</div>
+      <div class="bio-title">Founder, MCL Advisors</div>
+    </div>
+
+    <div class="about-text">
+      <span class="section-label">About</span>
+      <h2 class="section-title">Michael Yousif</h2>
+      <div class="bio-body">
+        <p>Michael Yousif has spent his career at the intersection of hotel investment, operations, and capital markets — advising on transactions, building portfolios, and negotiating the agreements that determine how assets perform long after the deal closes.</p>
+        <p>To him, hospitality has always been personal. It's the belief that where you stay shapes how you experience a place — that the right property at the right moment can make a
+          <span class="bio-keyword" data-img="travel" data-caption="Grand Hotel, Mackinac Island">trip feel like a memory worth keeping</span>.
+          He's drawn to hotels that create that feeling: places that are new and surprising, and places that feel like they've always been there.</p>
+        <p>Outside of work, Michael is a committed
+          <span class="bio-keyword" data-img="family" data-caption="The whole crew">family man</span>,
+          a homemade
+          <span class="bio-keyword" data-img="pizza" data-caption="Friday night, every week">pizza perfectionist</span>,
+          and a lifelong
+          <span class="bio-keyword" data-img="beatles" data-caption="The Beatles, always">Beatles enthusiast</span>.
+          He rides bikes, lifts weights, spends time
+          <span class="bio-keyword" data-img="ski" data-caption="Up north, any chance he gets">up north</span>,
+          and has taken up
+          <span class="bio-keyword" data-img="birding" data-caption="Be still and observe">birding</span>
+          with the same curiosity he brings to everything he decides to learn.
+        </p>
+      </div>
+      <div class="about-credentials">
+        <div class="cred-box">
+          <span class="cred-val">$3.5B+</span>
+          <span class="cred-label">Transaction & Development Volume</span>
         </div>
-        <div class="serve-card">
-          <h3>Brokers</h3>
-          <p>Diligence cleanup, OM preparation, and closing support for brokers who need hospitality depth without adding headcount. White-label available.</p>
+        <div class="cred-box">
+          <span class="cred-val">40+</span>
+          <span class="cred-label">Management Contracts Negotiated</span>
         </div>
-        <div class="serve-card">
-          <h3>Lenders & Special Servicers</h3>
-          <p>Asset evaluation, workout strategy, and disposition support for troubled hotel loans — including CMBS, bridge, and note sale scenarios.</p>
+        <div class="cred-box">
+          <span class="cred-val">80+</span>
+          <span class="cred-label">Hotel Assets Overseen</span>
         </div>
-        <div class="serve-card">
-          <h3>Buyers & Investors</h3>
-          <p>Pre-acquisition diligence, comp analysis, market studies, and brand evaluation before capital is committed.</p>
-        </div>
-        <div class="serve-card">
-          <h3>Public Entities</h3>
-          <p>Feasibility analysis, developer evaluation, and market studies for municipalities, authorities, and public-private partnerships.</p>
-        </div>
-        <div class="serve-card">
-          <h3>Advisors & Counsel</h3>
-          <p>Expert hospitality opinion for legal, financial, or restructuring advisors who need a credible, independent operator perspective.</p>
+        <div class="cred-box">
+          <span class="cred-val">15 Yrs</span>
+          <span class="cred-label">Senior Industry Experience</span>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- LENDER / CMBS DEEP DIVE -->
-  <section class="lender" id="lender">
-    <div class="lender-inner">
-      <p class="section-label">Lender & Special Servicer Advisory</p>
-      <h2 class="section-title">Hospitality expertise for troubled situations.</h2>
-      <p class="lender-intro">CMBS special servicers and lenders face hotel problems they weren't built to solve. We provide the operational expertise to understand what you're holding — and what to do with it.</p>
-      <div class="lender-grid">
-        <ul class="lender-list">
-          <li><span class="li-num">i.</span><div><strong>Asset Assessment</strong><p>Independent operational and market review. Is this hotel worth saving, repositioning, or disposing of?</p></div></li>
-          <li><span class="li-num">ii.</span><div><strong>Borrower Evaluation</strong><p>Separating the asset problem from the operator problem — critical before deciding on a workout path.</p></div></li>
-          <li><span class="li-num">iii.</span><div><strong>Workout Strategy</strong><p>Deed-in-lieu, note sale, receivership, brand or management change — structured to the asset's reality.</p></div></li>
-          <li><span class="li-num">iv.</span><div><strong>Receivership Support</strong><p>Expert hospitality advisor to the receiver or court through the process.</p></div></li>
-          <li><span class="li-num">v.</span><div><strong>Disposition Readiness</strong><p>Diligence, positioning, and buyer-facing materials for note or asset sales.</p></div></li>
-        </ul>
-        <div class="lender-callout">
-          <span class="lender-callout-label">Why MCL for CMBS</span>
-          <h3>Most special servicers don't have hospitality depth in-house.</h3>
-          <p>Hotels are operationally complex collateral. A room count and an STR report don't tell you whether the management team is the problem, whether the flag is right for the market, or what a realistic stabilization timeline looks like.</p>
-          <p>MCL speaks both languages — the real estate finance side and the operator side. That's the gap we fill.</p>
-          <a href="#contact">Discuss a Situation →</a>
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div class="gold-rule" style="max-width:700px;margin:0 auto 48px;"></div>
+    <span class="section-label" style="display:block;margin-bottom:16px;">Get in Touch</span>
+    <h2 class="section-title">Start with a scoping call.</h2>
+    <p class="section-body" style="margin:0 auto 0;">No proposals, no pitches. A direct conversation about your deal, your portfolio, or your question — and whether we're the right fit to help.</p>
+    <form class="contact-form" onsubmit="return false;">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" placeholder="Your name">
+        </div>
+        <div class="form-group">
+          <label for="org">Organization</label>
+          <input type="text" id="org" placeholder="Company or fund">
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- INDEPENDENT ADVISORY -->
-  <section class="independent" id="independent">
-    <div class="independent-inner">
-      <p class="section-label">Third-Party & Independent Advisory</p>
-      <h2 class="section-title">When you need a voice with no agenda.</h2>
-      <p class="independent-intro">In complex transactions, the most valuable advisor in the room is often the one who owes nothing to any party. MCL Advisors serves as an independent third-party opinion when the deal needs a credible, unconflicted read.</p>
-      <div class="independent-grid">
-        <div class="ind-card">
-          <span class="ind-label">Dispute & Disagreement</span>
-          <h3>When parties can't agree on value or viability</h3>
-          <p>Independent operational and market analysis that both sides can reference — with full transparency on methodology.</p>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="you@company.com">
         </div>
-        <div class="ind-card">
-          <span class="ind-label">Lender vs. Borrower</span>
-          <h3>Asset assessment in troubled situations</h3>
-          <p>When a workout requires clarity on what the asset is actually worth — and what it would cost to fix — we deliver the honest read.</p>
-        </div>
-        <div class="ind-card">
-          <span class="ind-label">Multi-Party Transactions</span>
-          <h3>Brands, investors, and operators at the same table</h3>
-          <p>A shared expert frame of reference no single party could credibly provide on their own.</p>
+        <div class="form-group">
+          <label for="role">I am a</label>
+          <select id="role">
+            <option value="" disabled selected>Select your role</option>
+            <option>Buyer / Investor</option>
+            <option>Broker</option>
+            <option>Lender / Special Servicer</option>
+            <option>Brand / Flag</option>
+            <option>Public Entity</option>
+            <option>Legal / Financial Advisor</option>
+            <option>Other</option>
+          </select>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- FEES -->
-  <section class="fees" id="fees">
-    <div class="fees-inner">
-      <p class="section-label">How We Work</p>
-      <h2 class="section-title">Fee Structure</h2>
-      <div class="fees-grid">
-        <div class="fee-card">
-          <h4>Model A — Fixed Fee</h4>
-          <p>Flat, scoped upfront. Best for defined engagements: diligence support, data room preparation, refi packages with a clear end point.</p>
-        </div>
-        <div class="fee-card">
-          <h4>Model B — Fixed + Success Fee</h4>
-          <p>Modest fixed fee through diligence, plus a negotiated percentage of purchase price charged to the transaction at close. Fixed fee credited at closing. Most common structure.</p>
-        </div>
-        <div class="fee-card">
-          <h4>Model C — Monthly Retainer</h4>
-          <p>Fixed monthly for ongoing pipeline coverage and portfolio oversight. Best for investors with active deal flow across multiple assets.</p>
-        </div>
+      <div class="form-group">
+        <label for="message">What are you working on?</label>
+        <textarea id="message" placeholder="Briefly describe your situation, asset type, and what kind of support you're looking for…"></textarea>
       </div>
-      <p class="fees-note">All engagements are fixed-fee and scoped in advance — no open-ended hourly billing. Fees for transaction engagements are structured to the deal and charged at closing. Pricing confirmed in the scoping call.</p>
-    </div>
-  </section>
-
-  <!-- CASE STUDIES -->
-  <section class="case-study" id="case-study">
-    <div class="case-study-inner">
-      <p class="section-label">Work</p>
-      <h2 class="section-title">Case Studies</h2>
-      <div class="case-study-grid">
-        <div class="cs-placeholder"><p>Case study coming soon</p></div>
-        <div class="cs-placeholder"><p>Case study coming soon</p></div>
-        <div class="cs-placeholder"><p>Case study coming soon</p></div>
-        <div class="cs-placeholder"><p>Case study coming soon</p></div>
+      <button class="form-submit" type="submit">Send Message</button>
+    </form>
+    <div style="margin-top:48px;padding-top:40px;border-top:1px solid rgba(184,150,62,0.2);display:flex;justify-content:center;gap:64px;">
+      <div>
+        <div style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;">Email</div>
+        <a href="mailto:michael@mcladvisor.com" style="font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--ink);text-decoration:none;">michael@mcladvisor.com</a>
+      </div>
+      <div>
+        <div style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;">Phone</div>
+        <span style="font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--ink);">(248) 990-8017</span>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- PARTNERS -->
-  <section class="partners" id="partners">
-    <div class="partners-inner">
-      <p class="section-label">Relationships</p>
-      <h2 class="section-title">Trusted Partners & Networks</h2>
-      <p class="partners-sub">Built over 15 years at the intersection of hotel investment, operations, and capital markets.</p>
-      <div class="partners-grid">
-        <div class="partner-placeholder"><p>Partner coming soon</p></div>
-        <div class="partner-placeholder"><p>Partner coming soon</p></div>
-        <div class="partner-placeholder"><p>Partner coming soon</p></div>
-        <div class="partner-placeholder"><p>Partner coming soon</p></div>
-        <div class="partner-placeholder"><p>Partner coming soon</p></div>
-        <div class="partner-placeholder"><p>Partner coming soon</p></div>
-        <div class="partner-placeholder"><p>Partner coming soon</p></div>
-        <div class="partner-placeholder"><p>Partner coming soon</p></div>
-      </div>
-    </div>
-  </section>
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+    <img src="mcllogostackedlight.png" alt="MCL Advisors" />
+  </div>
+  <ul class="footer-links">
+    <li><a href="#about-firm">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#serve">Who We Serve</a></li>
+    <li><a href="#lender">Lender Advisory</a></li>
+    <li><a href="#fees">Fees</a></li>
+    <li><a href="#about-bio">Michael</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="footer-copy">© 2026 MCL Advisors</div>
+</footer>
 
-  <!-- ABOUT / BIO -->
-  <section class="about" id="about">
-    <div class="about-inner">
-      <div class="bio-photo-wrap">
-        <div class="bio-photo" id="bioPhoto">
-          <img src="photos/photo-default.jpg"  id="img-default"  class="default-photo" alt="Michael Yousif" />
-          <img src="photos/photo-family.jpg"   id="img-family"   alt="Family" />
-          <img src="photos/photo-pizza.jpg"    id="img-pizza"    alt="Pizza night" />
-          <img src="photos/photo-beatles.jpg"  id="img-beatles"  alt="Beatles birthday" />
-          <img src="photos/photo-travel.jpg"   id="img-travel"   alt="Grand Hotel Mackinac" />
-          <img src="photos/photo-birding.jpg"  id="img-birding"  alt="Bald eagle" />
-          <img src="photos/photo-ski.jpg"      id="img-ski"      alt="Up north skiing" />
-        </div>
-        <div class="bio-photo-caption" id="photoCaption"></div>
-        <div class="bio-name">Michael Yousif</div>
-        <div class="bio-title">Founder, MCL Advisors</div>
-      </div>
+<script>
+  // ── Accordion ──
+  function toggleCard(id) {
+    const card = document.getElementById(id);
+    card.classList.toggle('open');
+  }
 
-      <div class="about-text">
-        <p class="section-label">About</p>
-        <h2>Michael Yousif</h2>
-        <div class="bio-body">
-          <p>Michael Yousif has spent his career at the intersection of hotel investment, operations, and capital markets — advising on transactions, building portfolios, and negotiating the agreements that determine how assets perform long after the deal closes.</p>
-          <p>To him, hospitality has always been personal. It's the belief that where you stay shapes how you experience a place — that the right property at the right moment can make a
-            <span class="bio-keyword" data-img="travel" data-caption="Grand Hotel, Mackinac Island">trip feel like a memory worth keeping</span>.
-            He's drawn to hotels that create that feeling: places that are new and surprising, and places that feel like they've always been there.</p>
-          <p>Outside of work, Michael is a committed
-            <span class="bio-keyword" data-img="family" data-caption="The whole crew">family man</span>,
-            a homemade
-            <span class="bio-keyword" data-img="pizza" data-caption="Friday night, every week">pizza perfectionist</span>,
-            and a lifelong
-            <span class="bio-keyword" data-img="beatles" data-caption="The Beatles, always">Beatles enthusiast</span>.
-            He rides bikes, lifts weights, spends time
-            <span class="bio-keyword" data-img="ski" data-caption="Up north, any chance he gets">up north</span>,
-            and has taken up
-            <span class="bio-keyword" data-img="birding" data-caption="Be still and observe">birding</span>
-            with the same curiosity he brings to everything he decides to learn.
-          </p>
-        </div>
-        <div class="about-credentials">
-          <div class="cred-box"><span class="cred-val">$3.5B+</span><span class="cred-label">Transaction & Development Volume</span></div>
-          <div class="cred-box"><span class="cred-val">40+</span><span class="cred-label">Management Contracts Negotiated</span></div>
-          <div class="cred-box"><span class="cred-val">80+</span><span class="cred-label">Hotel Assets Overseen</span></div>
-          <div class="cred-box"><span class="cred-val">15 Yrs</span><span class="cred-label">Senior Industry Experience</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
+  // ── Bio photo hover ──
+  const keywords   = document.querySelectorAll('.bio-keyword');
+  const caption    = document.getElementById('photoCaption');
+  const defaultImg = document.getElementById('img-default');
+  let   activeImg  = null;
 
-  <!-- CONTACT -->
-  <section class="contact" id="contact">
-    <div class="contact-inner">
-      <p class="section-label">Get in Touch</p>
-      <h2>Start with a scoping call</h2>
-      <p>No proposals, no pitches. A direct conversation about your deal, your portfolio, or your question — and whether we're the right fit to help.</p>
-      <div class="contact-details">
-        <div class="contact-item">
-          <p class="label">Email</p>
-          <a href="mailto:michael@mcladvisor.com">michael@mcladvisor.com</a>
-        </div>
-        <div class="contact-item">
-          <p class="label">Phone</p>
-          <span>(248) 990-8017</span>
-        </div>
-      </div>
-      <a href="mailto:michael@mcladvisor.com" class="contact-cta">Send a Message</a>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-logo">
-      <img src="mcllogostackedlight.png" alt="MCL Advisors" />
-    </div>
-    <p>&copy; 2026 MCL Advisors. All rights reserved.</p>
-  </footer>
-
-  <script>
-    // Accordion
-    function toggleCard(id) {
-      const card = document.getElementById(id);
-      card.classList.toggle('open');
-    }
-
-    // Bio photo hover
-    const keywords   = document.querySelectorAll('.bio-keyword');
-    const caption    = document.getElementById('photoCaption');
-    const defaultImg = document.getElementById('img-default');
-    let   activeImg  = null;
-
-    keywords.forEach(kw => {
-      kw.addEventListener('mouseenter', () => {
-        const img = document.getElementById('img-' + kw.dataset.img);
-        if (!img) return;
-        defaultImg.classList.add('hidden');
-        if (activeImg && activeImg !== img) activeImg.classList.remove('active');
-        img.classList.add('active');
-        activeImg = img;
-        caption.textContent = kw.dataset.caption || '';
-      });
-      kw.addEventListener('mouseleave', () => {
-        if (activeImg) { activeImg.classList.remove('active'); activeImg = null; }
-        defaultImg.classList.remove('hidden');
-        caption.textContent = '';
-      });
+  keywords.forEach(kw => {
+    kw.addEventListener('mouseenter', () => {
+      const img = document.getElementById('img-' + kw.dataset.img);
+      if (!img) return;
+      defaultImg.classList.add('hidden');
+      if (activeImg && activeImg !== img) activeImg.classList.remove('active');
+      img.classList.add('active');
+      activeImg = img;
+      caption.textContent = kw.dataset.caption || '';
     });
-  </script>
+    kw.addEventListener('mouseleave', () => {
+      if (activeImg) { activeImg.classList.remove('active'); activeImg = null; }
+      defaultImg.classList.remove('hidden');
+      caption.textContent = '';
+    });
+  });
+</script>
 
 </body>
 </html>
