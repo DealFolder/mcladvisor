@@ -17,17 +17,27 @@
     }
     body { font-family: 'Georgia', serif; background: var(--white); color: var(--navy); }
 
+    /* ── NAV ── */
     nav {
-      background: var(--navy); display: flex; justify-content: space-between;
-      align-items: center; padding: 0 48px; height: 64px;
-      position: sticky; top: 0; z-index: 100; border-bottom: 2px solid var(--gold);
+      background: var(--white);
+      display: flex; justify-content: space-between;
+      align-items: center; padding: 0 48px; height: 72px;
+      position: sticky; top: 0; z-index: 100;
+      border-bottom: 1px solid var(--mid);
+      box-shadow: 0 1px 12px rgba(0,0,0,0.06);
     }
-    .nav-logo { color: var(--white); font-size: 17px; letter-spacing: 0.12em; font-weight: bold; }
-    .nav-logo span { color: var(--gold); }
-    .nav-links { display: flex; gap: 32px; }
-    .nav-links a { color: rgba(255,255,255,0.75); text-decoration: none; font-family: Arial, sans-serif; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.2s; }
+    .nav-logo img { height: 40px; display: block; }
+    .nav-links { display: flex; gap: 32px; align-items: center; }
+    .nav-links a { color: var(--navy); text-decoration: none; font-family: Arial, sans-serif; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.2s; }
     .nav-links a:hover { color: var(--gold); }
+    .nav-links .nav-cta {
+      background: var(--navy); color: var(--white);
+      padding: 8px 20px; font-size: 11px; letter-spacing: 0.1em;
+      transition: background 0.2s;
+    }
+    .nav-links .nav-cta:hover { background: var(--gold); color: var(--navy); }
 
+    /* ── HERO ── */
     .hero { background: var(--navy); padding: 96px 48px 80px; text-align: center; }
     .hero-eyebrow { font-family: Arial, sans-serif; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
     .hero h1 { font-size: clamp(32px, 5vw, 52px); color: var(--white); font-weight: normal; line-height: 1.2; max-width: 760px; margin: 0 auto 24px; }
@@ -39,29 +49,84 @@
     .positioning { background: var(--light); padding: 28px 48px; text-align: center; border-bottom: 1px solid var(--mid); }
     .positioning p { font-style: italic; font-size: 15px; color: var(--navy); max-width: 720px; margin: 0 auto; line-height: 1.7; }
 
+    /* ── SHARED ── */
     .section-label { font-family: Arial, sans-serif; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
     .section-title { font-size: 28px; font-weight: normal; color: var(--navy); margin-bottom: 48px; }
 
+    /* ── SERVICES ── */
     .services { padding: 80px 48px; max-width: 1100px; margin: 0 auto; }
     .services-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: var(--mid); border: 1px solid var(--mid); }
-    .service-card { background: var(--white); padding: 36px 32px; transition: background 0.2s; }
-    .service-card:hover { background: var(--light); }
-    .service-num { display: inline-block; background: var(--gold); color: var(--navy); font-family: Arial, sans-serif; font-size: 10px; font-weight: bold; padding: 3px 8px; margin-bottom: 14px; }
-    .service-card h3 { font-size: 17px; font-weight: bold; color: var(--navy); margin-bottom: 6px; }
-    .service-sub { font-family: Arial, sans-serif; font-size: 11px; color: var(--gray); font-style: italic; margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid var(--gold); }
-    .service-card ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-    .service-card ul li { font-family: Arial, sans-serif; font-size: 13px; color: var(--navy); line-height: 1.55; padding-left: 14px; position: relative; }
-    .service-card ul li::before { content: ''; position: absolute; left: 0; top: 7px; width: 5px; height: 5px; background: var(--gold); border-radius: 50%; }
-    .dealfolder-link { display: inline-block; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--mid); width: 100%; font-family: Arial, sans-serif; font-size: 12px; color: var(--gray); line-height: 1.5; }
+
+    /* Accordion card */
+    .service-card { background: var(--white); transition: background 0.2s; }
+    .service-card-header {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 24px 28px; cursor: pointer; user-select: none;
+      border-bottom: 1px solid transparent; transition: border-color 0.2s;
+    }
+    .service-card-header:hover { background: var(--light); }
+    .service-card.open .service-card-header { border-bottom: 1px solid var(--mid); }
+    .service-header-left { display: flex; align-items: center; gap: 14px; }
+    .service-num { display: inline-block; background: var(--gold); color: var(--navy); font-family: Arial, sans-serif; font-size: 10px; font-weight: bold; padding: 3px 8px; flex-shrink: 0; }
+    .service-header-text h3 { font-size: 16px; font-weight: bold; color: var(--navy); margin-bottom: 3px; }
+    .service-sub { font-family: Arial, sans-serif; font-size: 11px; color: var(--gray); font-style: italic; }
+    .service-chevron { font-size: 11px; color: var(--gold); flex-shrink: 0; transition: transform 0.25s; }
+    .service-card.open .service-chevron { transform: rotate(180deg); }
+
+    .service-card-body { display: none; padding: 0 28px 24px; }
+    .service-card.open .service-card-body { display: block; }
+    .service-card-body ul { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-top: 16px; }
+    .service-card-body ul li { font-family: Arial, sans-serif; font-size: 13px; color: var(--navy); line-height: 1.55; padding-left: 14px; position: relative; }
+    .service-card-body ul li::before { content: ''; position: absolute; left: 0; top: 7px; width: 5px; height: 5px; background: var(--gold); border-radius: 50%; }
+    .service-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--mid); }
+    .service-tag { font-family: Arial, sans-serif; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray); border: 1px solid var(--mid); padding: 3px 9px; }
+    .dealfolder-link { display: block; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--mid); font-family: Arial, sans-serif; font-size: 12px; color: var(--gray); line-height: 1.6; }
     .dealfolder-link a { color: var(--gold); text-decoration: none; font-weight: bold; }
     .dealfolder-link a:hover { text-decoration: underline; }
 
+    /* ── DEALFOLDER BAND ── */
     .dealfolder-band { background: var(--dark2); padding: 40px 48px; text-align: center; border-top: 2px solid var(--gold); border-bottom: 2px solid var(--gold); }
     .dealfolder-band p { font-family: Arial, sans-serif; font-size: 14px; color: rgba(255,255,255,0.7); max-width: 680px; margin: 0 auto 20px; line-height: 1.7; }
     .dealfolder-band p strong { color: var(--gold); }
     .dealfolder-band a { display: inline-block; border: 1px solid var(--gold); color: var(--gold); font-family: Arial, sans-serif; font-size: 11px; font-weight: bold; letter-spacing: 0.1em; text-transform: uppercase; padding: 10px 28px; text-decoration: none; transition: all 0.2s; }
     .dealfolder-band a:hover { background: var(--gold); color: var(--navy); }
 
+    /* ── WHO WE SERVE ── */
+    .serve { background: var(--light); padding: 80px 48px; border-top: 1px solid var(--mid); }
+    .serve-inner { max-width: 1100px; margin: 0 auto; }
+    .serve-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--mid); border: 1px solid var(--mid); }
+    .serve-card { background: var(--white); padding: 32px 28px; }
+    .serve-card h3 { font-size: 16px; font-weight: bold; color: var(--navy); margin-bottom: 10px; border-bottom: 1px solid var(--gold); padding-bottom: 10px; }
+    .serve-card p { font-family: Arial, sans-serif; font-size: 13px; color: var(--gray); line-height: 1.65; }
+
+    /* ── LENDER / CMBS ── */
+    .lender { background: var(--dark2); padding: 80px 48px; border-top: 2px solid var(--gold); }
+    .lender-inner { max-width: 1100px; margin: 0 auto; }
+    .lender .section-title { color: var(--white); }
+    .lender-intro { font-family: Arial, sans-serif; font-size: 14px; color: rgba(255,255,255,0.6); max-width: 640px; margin-bottom: 48px; line-height: 1.7; }
+    .lender-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start; }
+    .lender-list { list-style: none; }
+    .lender-list li { display: grid; grid-template-columns: 28px 1fr; gap: 12px; padding: 18px 0; border-bottom: 1px solid rgba(255,255,255,0.07); align-items: start; }
+    .lender-list li .li-num { font-size: 13px; color: var(--gold); font-style: italic; padding-top: 1px; }
+    .lender-list li strong { display: block; font-family: Arial, sans-serif; font-size: 13px; font-weight: bold; color: var(--white); margin-bottom: 4px; }
+    .lender-list li p { font-family: Arial, sans-serif; font-size: 12px; color: rgba(255,255,255,0.45); line-height: 1.6; }
+    .lender-callout { background: rgba(201,168,76,0.07); border: 1px solid rgba(201,168,76,0.25); padding: 36px 32px; }
+    .lender-callout-label { font-family: Arial, sans-serif; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; display: block; }
+    .lender-callout h3 { font-size: 20px; font-weight: normal; color: var(--white); margin-bottom: 14px; line-height: 1.3; }
+    .lender-callout p { font-family: Arial, sans-serif; font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7; margin-bottom: 12px; }
+    .lender-callout a { display: inline-block; margin-top: 16px; font-family: Arial, sans-serif; font-size: 11px; font-weight: bold; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(201,168,76,0.4); padding-bottom: 2px; }
+
+    /* ── INDEPENDENT ADVISORY ── */
+    .independent { background: var(--white); padding: 80px 48px; border-top: 1px solid var(--mid); }
+    .independent-inner { max-width: 1100px; margin: 0 auto; }
+    .independent-intro { font-family: Arial, sans-serif; font-size: 14px; color: var(--gray); max-width: 640px; margin-bottom: 48px; line-height: 1.7; }
+    .independent-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--mid); border: 1px solid var(--mid); }
+    .ind-card { background: var(--white); padding: 32px 28px; }
+    .ind-label { font-family: Arial, sans-serif; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; display: block; }
+    .ind-card h3 { font-size: 16px; font-weight: bold; color: var(--navy); margin-bottom: 10px; }
+    .ind-card p { font-family: Arial, sans-serif; font-size: 13px; color: var(--gray); line-height: 1.65; }
+
+    /* ── FEES ── */
     .fees { background: var(--navy); padding: 64px 48px; }
     .fees-inner { max-width: 1100px; margin: 0 auto; }
     .fees .section-title { color: var(--white); margin-bottom: 36px; }
@@ -71,12 +136,14 @@
     .fee-card p { font-family: Arial, sans-serif; font-size: 12.5px; color: rgba(255,255,255,0.6); line-height: 1.6; }
     .fees-note { font-family: Arial, sans-serif; font-size: 11px; color: rgba(255,255,255,0.35); margin-top: 24px; text-align: center; }
 
+    /* ── CASE STUDIES ── */
     .case-study { padding: 80px 48px; background: var(--light); border-top: 1px solid var(--mid); }
     .case-study-inner { max-width: 1100px; margin: 0 auto; }
     .case-study-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: var(--mid); border: 1px solid var(--mid); }
     .cs-placeholder { background: var(--white); padding: 48px 32px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; min-height: 220px; }
     .cs-placeholder p { font-family: Arial, sans-serif; font-size: 13px; color: var(--mid); font-style: italic; }
 
+    /* ── PARTNERS ── */
     .partners { padding: 64px 48px; border-top: 1px solid var(--mid); }
     .partners-inner { max-width: 1100px; margin: 0 auto; text-align: center; }
     .partners .section-title { margin-bottom: 12px; }
@@ -85,32 +152,29 @@
     .partner-placeholder { background: var(--white); padding: 36px 20px; display: flex; align-items: center; justify-content: center; min-height: 90px; }
     .partner-placeholder p { font-family: Arial, sans-serif; font-size: 12px; color: var(--mid); font-style: italic; }
 
-    /* ABOUT */
+    /* ── ABOUT / BIO ── */
     .about { padding: 80px 48px; background: var(--light); border-top: 1px solid var(--mid); }
     .about-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 380px 1fr; gap: 64px; align-items: start; }
-
     .bio-photo-wrap { position: relative; }
     .bio-photo { width: 100%; aspect-ratio: 3/4; overflow: hidden; position: relative; background: var(--navy); }
     .bio-photo img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.45s ease; }
     .bio-photo img.active { opacity: 1; }
     .bio-photo img.default-photo { opacity: 1; }
     .bio-photo img.default-photo.hidden { opacity: 0; }
-
-    .bio-photo-caption { font-family: Arial, sans-serif; font-size: 11px; color: var(--gray); text-align: center; margin-top: 10px; font-style: italic; min-height: 18px; transition: opacity 0.3s; }
+    .bio-photo-caption { font-family: Arial, sans-serif; font-size: 11px; color: var(--gray); text-align: center; margin-top: 10px; font-style: italic; min-height: 18px; }
     .bio-name { font-size: 18px; font-weight: bold; color: var(--navy); margin-top: 14px; }
     .bio-title { font-family: Arial, sans-serif; font-size: 12px; color: var(--gray); margin-top: 4px; }
-
     .about-text h2 { font-size: 28px; font-weight: normal; margin-bottom: 24px; }
     .bio-body { font-family: Arial, sans-serif; font-size: 14px; color: var(--gray); line-height: 1.85; margin-bottom: 32px; }
     .bio-body p { margin-bottom: 18px; }
     .bio-keyword { color: var(--gold); font-weight: bold; cursor: default; border-bottom: 1px dotted var(--gold); transition: color 0.2s; display: inline-block; }
     .bio-keyword:hover { color: var(--navy); }
-
     .about-credentials { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: var(--mid); border: 1px solid var(--mid); }
     .cred-box { background: var(--white); padding: 20px; }
     .cred-val { font-size: 26px; color: var(--navy); display: block; margin-bottom: 4px; }
     .cred-label { font-family: Arial, sans-serif; font-size: 11px; color: var(--gray); line-height: 1.4; }
 
+    /* ── CONTACT ── */
     .contact { background: var(--navy); padding: 80px 48px; }
     .contact-inner { max-width: 600px; margin: 0 auto; text-align: center; }
     .contact .section-label { color: var(--gold); }
@@ -123,33 +187,45 @@
     .contact-cta { display: inline-block; background: var(--gold); color: var(--navy); font-family: Arial, sans-serif; font-size: 12px; font-weight: bold; letter-spacing: 0.1em; text-transform: uppercase; padding: 14px 36px; text-decoration: none; transition: opacity 0.2s; }
     .contact-cta:hover { opacity: 0.85; }
 
-    footer { background: var(--dark2); padding: 24px 48px; display: flex; justify-content: space-between; align-items: center; border-top: 2px solid var(--gold); }
-    footer .logo { color: var(--white); font-size: 13px; letter-spacing: 0.1em; }
-    footer .logo span { color: var(--gold); }
+    /* ── FOOTER ── */
+    footer { background: var(--dark2); padding: 32px 48px; display: flex; justify-content: space-between; align-items: center; border-top: 2px solid var(--gold); }
+    .footer-logo img { height: 48px; display: block; }
     footer p { font-family: Arial, sans-serif; font-size: 11px; color: rgba(255,255,255,0.35); }
 
-    @media (max-width: 900px) { .about-inner { grid-template-columns: 1fr; } }
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .about-inner { grid-template-columns: 1fr; }
+      .lender-grid { grid-template-columns: 1fr; }
+      .serve-grid { grid-template-columns: 1fr 1fr; }
+      .independent-grid { grid-template-columns: 1fr; }
+    }
     @media (max-width: 768px) {
       nav { padding: 0 20px; } .nav-links { display: none; }
-      .hero, .services, .fees, .case-study, .partners, .about, .contact { padding: 48px 24px; }
-      .services-grid, .fees-grid, .case-study-grid, .partners-grid, .about-credentials { grid-template-columns: 1fr; }
-      footer { flex-direction: column; gap: 12px; text-align: center; }
+      .hero, .services, .fees, .case-study, .partners, .about, .contact,
+      .serve, .lender, .independent { padding: 48px 24px; }
+      .services-grid, .fees-grid, .case-study-grid, .partners-grid,
+      .about-credentials, .serve-grid { grid-template-columns: 1fr; }
+      footer { flex-direction: column; gap: 16px; text-align: center; }
     }
   </style>
 </head>
 <body>
 
+  <!-- NAV -->
   <nav>
-    <div class="nav-logo">MCL <span>ADVISORS</span></div>
+    <div class="nav-logo">
+      <img src="mcllogoprimarydarkweb.png" alt="MCL Advisors" />
+    </div>
     <div class="nav-links">
       <a href="#services">Services</a>
-      <a href="#fees">Fee Structure</a>
-      <a href="#case-study">Case Studies</a>
+      <a href="#serve">Who We Serve</a>
+      <a href="#fees">Fees</a>
       <a href="#about">About</a>
-      <a href="#contact">Contact</a>
+      <a href="#contact" class="nav-cta">Contact</a>
     </div>
   </nav>
 
+  <!-- HERO -->
   <section class="hero">
     <p class="hero-eyebrow">Hospitality Deal Advisory</p>
     <h1>Advisory across the full <em>hotel deal lifecycle</em></h1>
@@ -161,66 +237,260 @@
     <p>From acquisition to disposition — and everything between. Transaction advisory, operator selection, ongoing investment management, and asset intelligence, structured to the deal.</p>
   </div>
 
+  <!-- SERVICES -->
   <section class="services" id="services">
     <p class="section-label">What We Do</p>
-    <h2 class="section-title">Four Service Areas</h2>
+    <h2 class="section-title">Advisory Services</h2>
     <div class="services-grid">
-      <div class="service-card">
-        <div class="service-num">01</div>
-        <h3>Transaction Advisory</h3>
-        <p class="service-sub">Critical Path · Diligence · Disposition · Refinance · M&A · Capital Events</p>
-        <ul>
-          <li><b>Critical Path & Diligence Management</b> — Structuring the transaction timeline, coordinating all diligence workstreams, and keeping deals on track from LOI through close.</li>
-          <li><b>Disposition Preparation</b> — Data room organization, asset documentation, sell-side positioning, and broker coordination to maximize price and speed to close.</li>
-          <li><b>Refinance & Recapitalization</b> — Lender package preparation, DSCR covenant review, and capital structure optimization for refi and recap events.</li>
-          <li><b>M&A & Capital Events</b> — Portfolio-level transaction support, JV structuring, and advisory through complex multi-asset or corporate-level deals.</li>
-        </ul>
-      </div>
-      <div class="service-card">
-        <div class="service-num">02</div>
-        <h3>Operator & Brand Selection</h3>
-        <p class="service-sub">Management Search · Contract Negotiation · Flag Strategy</p>
-        <ul>
-          <li><b>Operator Search & Evaluation</b> — Sourcing, RFP process, and structured interview across full-service, select-service, and lifestyle segments.</li>
-          <li><b>Management Agreement Negotiation</b> — Fee structures, performance thresholds, termination rights, and key-man provisions — aligned to owner outcomes.</li>
-          <li><b>Brand & Flag Strategy</b> — Franchise evaluation, flag selection, PIP scope negotiation, and brand conversion planning.</li>
-          <li><b>Transition Management</b> — Coordinating operator hand-off to protect NOI and guest continuity through ownership or management change.</li>
-        </ul>
-      </div>
-      <div class="service-card">
-        <div class="service-num">03</div>
-        <h3>Ongoing Investment Management</h3>
-        <p class="service-sub">Portfolio Oversight · Performance Monitoring · Capital Planning</p>
-        <ul>
-          <li><b>Portfolio Advisory Retainer</b> — Ongoing coverage across active deal pipelines, asset reviews, and strategic decisions for owners managing multiple assets.</li>
-          <li><b>Performance Monitoring</b> — RevPAR tracking, operator accountability, and NOI benchmarking against underwriting with clear escalation protocols.</li>
-          <li><b>Capital Planning & CapEx Oversight</b> — FF&E reserve strategy, PIP execution, and renovation scope management aligned to hold-period objectives.</li>
-          <li><b>Lender & Stakeholder Reporting</b> — Investor and lender reporting packages, covenant compliance, and variance analysis.</li>
-        </ul>
-      </div>
-      <div class="service-card">
-        <div class="service-num">04</div>
-        <h3>Asset Intelligence & Data</h3>
-        <p class="service-sub">Document Abstraction · AI Analysis · Data Institutionalization</p>
-        <ul>
-          <li><b>Contract & Document Abstraction</b> — AI-powered extraction of key terms from management agreements, franchise agreements, loan documents, and ground leases.</li>
-          <li><b>Pre-Transaction Asset Documentation</b> — Organize and institutionalize asset records before going to market — reducing buyer friction and supporting price.</li>
-          <li><b>Portfolio Data Infrastructure</b> — Workflow design and data architecture for operators and owners managing 10–100+ assets.</li>
-          <li><b>AI Platform Advisory</b> — Helping investors integrate AI into portfolio operations. Phase 1 assessment through ongoing implementation support.</li>
-        </ul>
-        <div class="dealfolder-link">
-          Built on <strong>DealFolder</strong> — our proprietary asset intelligence platform for hotel assets.
-          <br><a href="https://deal-folder.vercel.app" target="_blank">See the demo →</a>
+
+      <!-- 01 Transaction Advisory -->
+      <div class="service-card" id="card-1">
+        <div class="service-card-header" onclick="toggleCard('card-1')">
+          <div class="service-header-left">
+            <span class="service-num">01</span>
+            <div class="service-header-text">
+              <h3>Transaction Advisory</h3>
+              <p class="service-sub">Critical Path · Diligence · Disposition · Refinance · M&A</p>
+            </div>
+          </div>
+          <span class="service-chevron">▼</span>
+        </div>
+        <div class="service-card-body">
+          <ul>
+            <li><b>Critical Path & Diligence Management</b> — Structuring the transaction timeline, coordinating all diligence workstreams, and keeping deals on track from LOI through close.</li>
+            <li><b>Disposition Preparation</b> — Data room organization, asset documentation, sell-side positioning, and broker coordination to maximize price and speed to close.</li>
+            <li><b>Refinance & Recapitalization</b> — Lender package preparation, DSCR covenant review, and capital structure optimization for refi and recap events.</li>
+            <li><b>M&A & Capital Events</b> — Portfolio-level transaction support, JV structuring, and advisory through complex multi-asset or corporate-level deals.</li>
+          </ul>
+          <div class="dealfolder-link">
+            Manage your deal with <strong>DealFolder Transaction Mode</strong> — Critical Path tracking, Diligence Tracker, and deal room in one place.
+            <br><a href="https://deal-folder.vercel.app" target="_blank">Open Diligence Tracker →</a>
+            &nbsp;&nbsp;<a href="https://deal-folder.vercel.app" target="_blank">Open Critical Path →</a>
+          </div>
         </div>
       </div>
+
+      <!-- 02 Operator & Brand -->
+      <div class="service-card" id="card-2">
+        <div class="service-card-header" onclick="toggleCard('card-2')">
+          <div class="service-header-left">
+            <span class="service-num">02</span>
+            <div class="service-header-text">
+              <h3>Operator & Brand Selection</h3>
+              <p class="service-sub">Management Search · Contract Negotiation · Flag Strategy</p>
+            </div>
+          </div>
+          <span class="service-chevron">▼</span>
+        </div>
+        <div class="service-card-body">
+          <ul>
+            <li><b>Operator Search & Evaluation</b> — Sourcing, RFP process, and structured interview across full-service, select-service, and lifestyle segments.</li>
+            <li><b>Management Agreement Negotiation</b> — Fee structures, performance thresholds, termination rights, and key-man provisions — aligned to owner outcomes.</li>
+            <li><b>Brand & Flag Strategy</b> — Franchise evaluation, flag selection, PIP scope negotiation, and brand conversion planning.</li>
+            <li><b>Transition Management</b> — Coordinating operator hand-off to protect NOI and guest continuity through ownership or management change.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 03 Investment Management -->
+      <div class="service-card" id="card-3">
+        <div class="service-card-header" onclick="toggleCard('card-3')">
+          <div class="service-header-left">
+            <span class="service-num">03</span>
+            <div class="service-header-text">
+              <h3>Ongoing Investment Management</h3>
+              <p class="service-sub">Portfolio Oversight · Performance Monitoring · Capital Planning</p>
+            </div>
+          </div>
+          <span class="service-chevron">▼</span>
+        </div>
+        <div class="service-card-body">
+          <ul>
+            <li><b>Portfolio Advisory Retainer</b> — Ongoing coverage across active deal pipelines, asset reviews, and strategic decisions for owners managing multiple assets.</li>
+            <li><b>Performance Monitoring</b> — RevPAR tracking, operator accountability, and NOI benchmarking against underwriting with clear escalation protocols.</li>
+            <li><b>Capital Planning & CapEx Oversight</b> — FF&E reserve strategy, PIP execution, and renovation scope management aligned to hold-period objectives.</li>
+            <li><b>Lender & Stakeholder Reporting</b> — Investor and lender reporting packages, covenant compliance, and variance analysis.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 04 Asset Intelligence -->
+      <div class="service-card" id="card-4">
+        <div class="service-card-header" onclick="toggleCard('card-4')">
+          <div class="service-header-left">
+            <span class="service-num">04</span>
+            <div class="service-header-text">
+              <h3>Asset Intelligence & Data</h3>
+              <p class="service-sub">Market Diligence · Comp Analysis · Tours · Document Abstraction · AI</p>
+            </div>
+          </div>
+          <span class="service-chevron">▼</span>
+        </div>
+        <div class="service-card-body">
+          <ul>
+            <li><b>Market Diligence & Comp Analysis</b> — STR analysis, comp set evaluation, market penetration assessment, and demand generator mapping built for investment decisions.</li>
+            <li><b>Property Tours & Site Assessment</b> — Boots-on-the-ground property evaluation with an operator's eye — condition, positioning, and opportunity gaps.</li>
+            <li><b>Contract & Document Abstraction</b> — AI-powered extraction of key terms from management agreements, franchise agreements, loan documents, and ground leases.</li>
+            <li><b>Portfolio Data Infrastructure</b> — Workflow design and data architecture for operators and owners managing 10–100+ assets.</li>
+          </ul>
+          <div class="dealfolder-link">
+            Built on <strong>DealFolder</strong> — our proprietary asset intelligence platform for hotel assets.
+            <br><a href="https://deal-folder.vercel.app" target="_blank">See the demo →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 05 Transaction Support for Brokers -->
+      <div class="service-card" id="card-5">
+        <div class="service-card-header" onclick="toggleCard('card-5')">
+          <div class="service-header-left">
+            <span class="service-num">05</span>
+            <div class="service-header-text">
+              <h3>Transaction Support for Brokers</h3>
+              <p class="service-sub">Diligence Cleanup · OM Preparation · Closing Support</p>
+            </div>
+          </div>
+          <span class="service-chevron">▼</span>
+        </div>
+        <div class="service-card-body">
+          <ul>
+            <li><b>Diligence Cleanup</b> — Stepping in when a deal is messy or stalled — organizing workstreams and closing open items so the deal can move forward.</li>
+            <li><b>Offering Memorandum Preparation</b> — Hospitality-specific OMs built with real operational knowledge — not just numbers, but the context that supports price.</li>
+            <li><b>Closing Support</b> — Expert coordination through the final stretch: managing conditions, tracking open items, and keeping all parties aligned.</li>
+            <li><b>White-Label Ready</b> — We work behind the scenes. Your client relationship stays yours.</li>
+          </ul>
+          <div class="service-tags">
+            <span class="service-tag">For Brokers</span>
+            <span class="service-tag">Confidential</span>
+            <span class="service-tag">Project Basis</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 06 Lender & Special Servicer -->
+      <div class="service-card" id="card-6">
+        <div class="service-card-header" onclick="toggleCard('card-6')">
+          <div class="service-header-left">
+            <span class="service-num">06</span>
+            <div class="service-header-text">
+              <h3>Lender & Special Servicer Advisory</h3>
+              <p class="service-sub">Troubled Assets · CMBS · Workout Strategy · Receivership</p>
+            </div>
+          </div>
+          <span class="service-chevron">▼</span>
+        </div>
+        <div class="service-card-body">
+          <ul>
+            <li><b>Asset Assessment</b> — Independent operational and market review of the collateral. Is this hotel worth saving, repositioning, or disposing of?</li>
+            <li><b>Borrower Evaluation</b> — Separating the asset problem from the operator problem — critical before deciding on a workout path.</li>
+            <li><b>Workout Strategy</b> — Deed-in-lieu, note sale, receivership, brand or management change — structured to the asset's reality.</li>
+            <li><b>Receivership Support</b> — Expert hospitality advisor to the receiver or the court through the process.</li>
+            <li><b>Disposition Readiness</b> — Diligence preparation, asset positioning, and buyer-facing materials for note or asset sales.</li>
+          </ul>
+          <div class="service-tags">
+            <span class="service-tag">CMBS</span>
+            <span class="service-tag">Bridge</span>
+            <span class="service-tag">Special Servicers</span>
+            <span class="service-tag">Third-Party Opinion</span>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
+  <!-- DEALFOLDER BAND -->
   <div class="dealfolder-band">
     <p><strong>Introducing DealFolder</strong> — the asset intelligence platform built specifically for hotel investors. One permanent folder per asset, AI-powered document analysis, and institutional memory that transfers with the deal.</p>
     <a href="https://deal-folder.vercel.app" target="_blank">See it in action →</a>
   </div>
 
+  <!-- WHO WE SERVE -->
+  <section class="serve" id="serve">
+    <div class="serve-inner">
+      <p class="section-label">Who We Serve</p>
+      <h2 class="section-title">Built for the people in the deal.</h2>
+      <div class="serve-grid">
+        <div class="serve-card">
+          <h3>Brands & Flags</h3>
+          <p>Conversion feasibility, franchisee evaluation, and market positioning to support brand growth decisions with operational grounding.</p>
+        </div>
+        <div class="serve-card">
+          <h3>Brokers</h3>
+          <p>Diligence cleanup, OM preparation, and closing support for brokers who need hospitality depth without adding headcount. White-label available.</p>
+        </div>
+        <div class="serve-card">
+          <h3>Lenders & Special Servicers</h3>
+          <p>Asset evaluation, workout strategy, and disposition support for troubled hotel loans — including CMBS, bridge, and note sale scenarios.</p>
+        </div>
+        <div class="serve-card">
+          <h3>Buyers & Investors</h3>
+          <p>Pre-acquisition diligence, comp analysis, market studies, and brand evaluation before capital is committed.</p>
+        </div>
+        <div class="serve-card">
+          <h3>Public Entities</h3>
+          <p>Feasibility analysis, developer evaluation, and market studies for municipalities, authorities, and public-private partnerships.</p>
+        </div>
+        <div class="serve-card">
+          <h3>Advisors & Counsel</h3>
+          <p>Expert hospitality opinion for legal, financial, or restructuring advisors who need a credible, independent operator perspective.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LENDER / CMBS DEEP DIVE -->
+  <section class="lender" id="lender">
+    <div class="lender-inner">
+      <p class="section-label">Lender & Special Servicer Advisory</p>
+      <h2 class="section-title">Hospitality expertise for troubled situations.</h2>
+      <p class="lender-intro">CMBS special servicers and lenders face hotel problems they weren't built to solve. We provide the operational expertise to understand what you're holding — and what to do with it.</p>
+      <div class="lender-grid">
+        <ul class="lender-list">
+          <li><span class="li-num">i.</span><div><strong>Asset Assessment</strong><p>Independent operational and market review. Is this hotel worth saving, repositioning, or disposing of?</p></div></li>
+          <li><span class="li-num">ii.</span><div><strong>Borrower Evaluation</strong><p>Separating the asset problem from the operator problem — critical before deciding on a workout path.</p></div></li>
+          <li><span class="li-num">iii.</span><div><strong>Workout Strategy</strong><p>Deed-in-lieu, note sale, receivership, brand or management change — structured to the asset's reality.</p></div></li>
+          <li><span class="li-num">iv.</span><div><strong>Receivership Support</strong><p>Expert hospitality advisor to the receiver or court through the process.</p></div></li>
+          <li><span class="li-num">v.</span><div><strong>Disposition Readiness</strong><p>Diligence, positioning, and buyer-facing materials for note or asset sales.</p></div></li>
+        </ul>
+        <div class="lender-callout">
+          <span class="lender-callout-label">Why MCL for CMBS</span>
+          <h3>Most special servicers don't have hospitality depth in-house.</h3>
+          <p>Hotels are operationally complex collateral. A room count and an STR report don't tell you whether the management team is the problem, whether the flag is right for the market, or what a realistic stabilization timeline looks like.</p>
+          <p>MCL speaks both languages — the real estate finance side and the operator side. That's the gap we fill.</p>
+          <a href="#contact">Discuss a Situation →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INDEPENDENT ADVISORY -->
+  <section class="independent" id="independent">
+    <div class="independent-inner">
+      <p class="section-label">Third-Party & Independent Advisory</p>
+      <h2 class="section-title">When you need a voice with no agenda.</h2>
+      <p class="independent-intro">In complex transactions, the most valuable advisor in the room is often the one who owes nothing to any party. MCL Advisors serves as an independent third-party opinion when the deal needs a credible, unconflicted read.</p>
+      <div class="independent-grid">
+        <div class="ind-card">
+          <span class="ind-label">Dispute & Disagreement</span>
+          <h3>When parties can't agree on value or viability</h3>
+          <p>Independent operational and market analysis that both sides can reference — with full transparency on methodology.</p>
+        </div>
+        <div class="ind-card">
+          <span class="ind-label">Lender vs. Borrower</span>
+          <h3>Asset assessment in troubled situations</h3>
+          <p>When a workout requires clarity on what the asset is actually worth — and what it would cost to fix — we deliver the honest read.</p>
+        </div>
+        <div class="ind-card">
+          <span class="ind-label">Multi-Party Transactions</span>
+          <h3>Brands, investors, and operators at the same table</h3>
+          <p>A shared expert frame of reference no single party could credibly provide on their own.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEES -->
   <section class="fees" id="fees">
     <div class="fees-inner">
       <p class="section-label">How We Work</p>
@@ -243,6 +513,7 @@
     </div>
   </section>
 
+  <!-- CASE STUDIES -->
   <section class="case-study" id="case-study">
     <div class="case-study-inner">
       <p class="section-label">Work</p>
@@ -256,6 +527,7 @@
     </div>
   </section>
 
+  <!-- PARTNERS -->
   <section class="partners" id="partners">
     <div class="partners-inner">
       <p class="section-label">Relationships</p>
@@ -274,6 +546,7 @@
     </div>
   </section>
 
+  <!-- ABOUT / BIO -->
   <section class="about" id="about">
     <div class="about-inner">
       <div class="bio-photo-wrap">
@@ -313,27 +586,16 @@
           </p>
         </div>
         <div class="about-credentials">
-          <div class="cred-box">
-            <span class="cred-val">$3.5B+</span>
-            <span class="cred-label">Transaction & Development Volume</span>
-          </div>
-          <div class="cred-box">
-            <span class="cred-val">40+</span>
-            <span class="cred-label">Management Contracts Negotiated</span>
-          </div>
-          <div class="cred-box">
-            <span class="cred-val">80+</span>
-            <span class="cred-label">Hotel Assets Overseen</span>
-          </div>
-          <div class="cred-box">
-            <span class="cred-val">15 Yrs</span>
-            <span class="cred-label">Senior Industry Experience</span>
-          </div>
+          <div class="cred-box"><span class="cred-val">$3.5B+</span><span class="cred-label">Transaction & Development Volume</span></div>
+          <div class="cred-box"><span class="cred-val">40+</span><span class="cred-label">Management Contracts Negotiated</span></div>
+          <div class="cred-box"><span class="cred-val">80+</span><span class="cred-label">Hotel Assets Overseen</span></div>
+          <div class="cred-box"><span class="cred-val">15 Yrs</span><span class="cred-label">Senior Industry Experience</span></div>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- CONTACT -->
   <section class="contact" id="contact">
     <div class="contact-inner">
       <p class="section-label">Get in Touch</p>
@@ -353,12 +615,22 @@
     </div>
   </section>
 
+  <!-- FOOTER -->
   <footer>
-    <div class="logo">MCL <span>ADVISORS</span></div>
+    <div class="footer-logo">
+      <img src="mcllogostackedlight.png" alt="MCL Advisors" />
+    </div>
     <p>&copy; 2026 MCL Advisors. All rights reserved.</p>
   </footer>
 
   <script>
+    // Accordion
+    function toggleCard(id) {
+      const card = document.getElementById(id);
+      card.classList.toggle('open');
+    }
+
+    // Bio photo hover
     const keywords   = document.querySelectorAll('.bio-keyword');
     const caption    = document.getElementById('photoCaption');
     const defaultImg = document.getElementById('img-default');
