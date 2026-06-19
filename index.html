@@ -470,6 +470,47 @@
   }
   .ind-pillar-body { font-size: 13px; color: var(--slate); line-height: 1.6; }
 
+  /* ── ADVISORY TEASERS (homepage compact links to standalone pages) ── */
+  .advisory-teasers { background: var(--paper); }
+  .teaser-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 2px; margin-top: 48px; background: #E8E6E0;
+  }
+  .teaser-card {
+    background: var(--white);
+    padding: 40px 36px;
+    text-decoration: none;
+    display: block;
+    transition: background 0.2s;
+  }
+  .teaser-card:hover { background: #FBFAF7; }
+  .teaser-card.teaser-dark { background: var(--ink); }
+  .teaser-card.teaser-dark:hover { background: #232320; }
+  .teaser-label {
+    font-size: 10px; letter-spacing: 0.24em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 14px; display: block;
+  }
+  .teaser-dark .teaser-label { color: var(--gold-light); }
+  .teaser-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px; font-weight: 400;
+    color: var(--ink); margin-bottom: 12px; line-height: 1.25;
+  }
+  .teaser-dark .teaser-title { color: var(--white); }
+  .teaser-body {
+    font-size: 13px; color: var(--slate);
+    line-height: 1.7; margin-bottom: 20px;
+  }
+  .teaser-dark .teaser-body { color: rgba(255,255,255,0.55); }
+  .teaser-link {
+    font-size: 11px; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--gold);
+    border-bottom: 1px solid rgba(184,150,62,0.3);
+    padding-bottom: 2px; transition: border-color 0.2s;
+  }
+  .teaser-card:hover .teaser-link { border-color: var(--gold); }
+
   /* ── FEES ── */
   .fees { background: var(--ink); padding: 100px 48px; }
   .fees .section-title { color: var(--white); }
@@ -496,32 +537,25 @@
     margin-top: 28px; text-align: center; letter-spacing: 0.04em;
   }
 
-  /* ── CASE STUDIES ── */
-  .case-study { background: var(--paper); padding: 100px 48px; }
-  .case-study-grid {
-    display: grid; grid-template-columns: 1fr 1fr;
-    gap: 2px; background: #E8E6E0; margin-top: 48px;
+  /* ── WORK & RELATIONSHIPS (compact strip) ── */
+  .work-strip {
+    background: var(--paper);
+    padding: 40px 48px;
+    border-top: 1px solid #E8E6E0;
+    border-bottom: 1px solid #E8E6E0;
   }
-  .cs-placeholder {
-    background: var(--white); padding: 48px 32px;
-    display: flex; align-items: center; justify-content: center;
-    text-align: center; min-height: 220px;
+  .work-strip-inner {
+    display: grid;
+    grid-template-columns: 1fr 1px 1fr;
+    gap: 40px;
+    align-items: center;
   }
-  .cs-placeholder p { font-size: 13px; color: #D0CCC6; font-style: italic; }
-
-  /* ── PARTNERS ── */
-  .partners { background: var(--white); padding: 80px 48px; border-top: 1px solid #E8E6E0; }
-  .partners-inner { max-width: 1100px; margin: 0 auto; text-align: center; }
-  .partners-sub { font-size: 13px; color: var(--ash); margin-bottom: 48px; margin-top: 8px; }
-  .partners-grid {
-    display: grid; grid-template-columns: repeat(4, 1fr);
-    gap: 2px; background: #E8E6E0;
+  .work-strip-col .section-label { margin-bottom: 8px; }
+  .work-strip-text {
+    font-size: 13px; color: var(--ash);
+    font-style: italic; line-height: 1.6;
   }
-  .partner-placeholder {
-    background: var(--white); padding: 36px 20px;
-    display: flex; align-items: center; justify-content: center; min-height: 90px;
-  }
-  .partner-placeholder p { font-size: 12px; color: #D0CCC6; font-style: italic; }
+  .work-strip-divider { width: 1px; height: 36px; background: #E0DDD8; }
 
   /* ── ABOUT / BIO ── */
   .about-bio { background: var(--paper); padding: 100px 48px; }
@@ -631,6 +665,10 @@
     cursor: pointer; transition: background 0.2s; align-self: flex-start;
   }
   .form-submit:hover { background: var(--gold); }
+  .form-note {
+    font-size: 11px; color: var(--ash);
+    letter-spacing: 0.02em; margin-top: -4px;
+  }
 
   /* ── FOOTER ── */
   footer {
@@ -659,7 +697,10 @@
   @media (max-width: 900px) {
     nav { padding: 16px 24px; }
     .nav-links { display: none; }
-    section, .lender, .independent, .fees, .contact, .about-bio, .about-firm, .case-study, .partners { padding: 72px 24px; }
+    section, .lender, .independent, .fees, .contact, .about-bio, .about-firm, .advisory-teasers { padding: 72px 24px; }
+    .work-strip { padding: 40px 24px; }
+    .work-strip-inner { grid-template-columns: 1fr; gap: 24px; }
+    .work-strip-divider { display: none; }
     .about-grid { grid-template-columns: 1fr; gap: 48px; }
     .about-bio-inner { grid-template-columns: 1fr; }
     .services-grid { grid-template-columns: 1fr; }
@@ -667,6 +708,7 @@
     .independent-pillars { grid-template-columns: 1fr; }
     .lender-grid { grid-template-columns: 1fr; }
     .fees-grid { grid-template-columns: 1fr; }
+    .teaser-grid { grid-template-columns: 1fr; }
     .form-row { grid-template-columns: 1fr; }
     footer { flex-direction: column; gap: 24px; text-align: center; }
     .footer-links { flex-wrap: wrap; justify-content: center; }
@@ -674,7 +716,6 @@
   @media (max-width: 600px) {
     .serve-grid { grid-template-columns: 1fr; }
     .hero { padding: 100px 24px 60px; }
-    .case-study-grid, .partners-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -689,8 +730,8 @@
     <li><a href="#about-firm">About</a></li>
     <li><a href="#services">Services</a></li>
     <li><a href="#serve">Who We Serve</a></li>
-    <li><a href="#lender">Lender Advisory</a></li>
-    <li><a href="#independent">Independent Advisor</a></li>
+    <li><a href="lender-advisory.html">Lender Advisory</a></li>
+    <li><a href="independent-advisor.html">Independent Advisor</a></li>
     <li><a href="#fees">Fees</a></li>
     <li><a href="#about-bio">Team</a></li>
   </ul>
@@ -998,55 +1039,25 @@
   </div>
 </section>
 
-<!-- LENDER / CMBS -->
-<section class="lender" id="lender">
+<!-- LENDER / INDEPENDENT — TEASER LINKS TO STANDALONE PAGES -->
+<section class="advisory-teasers" id="lender">
   <div class="section-inner">
     <div class="gold-rule"></div>
-    <span class="section-label">Lender & Special Servicer Advisory</span>
-    <h2 class="section-title">Hospitality expertise for <em>troubled situations.</em></h2>
-    <p class="section-body">CMBS special servicers and lenders face hotel problems they weren't built to solve. We provide the operational expertise to understand what you're holding — and what to do with it.</p>
-    <div class="lender-grid">
-      <ul class="lender-list">
-        <li><span class="li-num">i.</span><div class="li-text"><strong>Asset Assessment</strong><p>Independent operational and market review of the collateral. Is this hotel worth saving, repositioning, or disposing of?</p></div></li>
-        <li><span class="li-num">ii.</span><div class="li-text"><strong>Borrower Evaluation</strong><p>Separating the asset problem from the operator problem — critical before deciding on a workout path.</p></div></li>
-        <li><span class="li-num">iii.</span><div class="li-text"><strong>Workout Strategy</strong><p>Deed-in-lieu, note sale, receivership, brand or management change — we help structure the right path given the asset's reality.</p></div></li>
-        <li><span class="li-num">iv.</span><div class="li-text"><strong>Receivership Support</strong><p>Expert hospitality advisor to the receiver or the court — providing operational grounding through the process.</p></div></li>
-        <li><span class="li-num">v.</span><div class="li-text"><strong>Disposition Readiness</strong><p>If you're selling the note or the asset, we help prepare it — diligence, positioning, and buyer-facing materials.</p></div></li>
-      </ul>
-      <div class="lender-callout">
-        <span class="lender-callout-label">Why MCL for CMBS</span>
-        <div class="lender-callout-title">Most special servicers don't have hospitality depth in-house.</div>
-        <p class="lender-callout-body">Hotels are operationally complex collateral. A room count and an STR report don't tell you whether the management team is the problem, whether the flag is right for the market, or what a realistic stabilization timeline looks like.</p>
-        <p class="lender-callout-body">MCL speaks both languages — the real estate finance side and the operator side — which is rare. That's the gap we fill.</p>
-        <a href="#contact">Discuss a Situation →</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- INDEPENDENT ADVISORY -->
-<section class="independent" id="independent">
-  <div class="independent-inner">
-    <div class="gold-rule"></div>
-    <span class="section-label" style="display:block;margin-bottom:16px;">Third-Party & Independent Advisory</span>
-    <h2 class="section-title">When you need a voice with no agenda.</h2>
-    <p class="section-body">In complex transactions, the most valuable advisor in the room is often the one who owes nothing to any party. MCL Advisors serves as an independent third-party opinion when the deal needs a credible, unconflicted read.</p>
-    <div class="independent-pillars">
-      <div class="ind-pillar">
-        <span class="ind-pillar-label">Dispute & Disagreement</span>
-        <div class="ind-pillar-title">When parties can't agree on value or viability</div>
-        <p class="ind-pillar-body">We provide independent operational and market analysis that both sides can reference — with full transparency on our methodology.</p>
-      </div>
-      <div class="ind-pillar">
-        <span class="ind-pillar-label">Lender vs. Borrower</span>
-        <div class="ind-pillar-title">Asset assessment in troubled situations</div>
-        <p class="ind-pillar-body">When a workout requires clarity on what the asset is actually worth — and what it would cost to fix — we deliver the honest read.</p>
-      </div>
-      <div class="ind-pillar">
-        <span class="ind-pillar-label">Multi-Party Transactions</span>
-        <div class="ind-pillar-title">Brands, investors, and operators at the same table</div>
-        <p class="ind-pillar-body">We help complex deals move forward by providing a shared, expert frame of reference no single party could credibly provide on their own.</p>
-      </div>
+    <span class="section-label">Specialized Engagements</span>
+    <h2 class="section-title">Two engagements that stand on their own.</h2>
+    <div class="teaser-grid">
+      <a href="lender-advisory.html" class="teaser-card teaser-dark">
+        <span class="teaser-label">Lender & Special Servicer Advisory</span>
+        <h3 class="teaser-title">Hospitality expertise for troubled situations.</h3>
+        <p class="teaser-body">CMBS special servicers and lenders face hotel problems they weren't built to solve. We provide the operational expertise to understand what you're holding — and what to do with it.</p>
+        <span class="teaser-link">Learn More →</span>
+      </a>
+      <a href="independent-advisor.html" class="teaser-card" id="independent">
+        <span class="teaser-label">Third-Party & Independent Advisory</span>
+        <h3 class="teaser-title">When you need a voice with no agenda.</h3>
+        <p class="teaser-body">In complex transactions, the most valuable advisor in the room is often the one who owes nothing to any party. An unconflicted, expert read when it matters most.</p>
+        <span class="teaser-link">Learn More →</span>
+      </a>
     </div>
   </div>
 </section>
@@ -1076,36 +1087,17 @@
   </div>
 </section>
 
-<!-- CASE STUDIES -->
-<section class="case-study" id="case-study">
-  <div class="section-inner">
-    <div class="gold-rule"></div>
-    <span class="section-label">Work</span>
-    <h2 class="section-title">Case studies.</h2>
-    <div class="case-study-grid">
-      <div class="cs-placeholder"><p>Case study coming soon</p></div>
-      <div class="cs-placeholder"><p>Case study coming soon</p></div>
-      <div class="cs-placeholder"><p>Case study coming soon</p></div>
-      <div class="cs-placeholder"><p>Case study coming soon</p></div>
+<!-- WORK & RELATIONSHIPS (compact) -->
+<section class="work-strip">
+  <div class="section-inner work-strip-inner">
+    <div class="work-strip-col">
+      <span class="section-label">Work</span>
+      <p class="work-strip-text">Case studies coming soon.</p>
     </div>
-  </div>
-</section>
-
-<!-- PARTNERS -->
-<section class="partners" id="partners">
-  <div class="partners-inner">
-    <span class="section-label">Relationships</span>
-    <h2 class="section-title" style="font-size:clamp(24px,3vw,36px);margin-bottom:8px;">Trusted Partners & Networks</h2>
-    <p class="partners-sub">Built over 15 years at the intersection of hotel investment, operations, and capital markets.</p>
-    <div class="partners-grid">
-      <div class="partner-placeholder"><p>Partner coming soon</p></div>
-      <div class="partner-placeholder"><p>Partner coming soon</p></div>
-      <div class="partner-placeholder"><p>Partner coming soon</p></div>
-      <div class="partner-placeholder"><p>Partner coming soon</p></div>
-      <div class="partner-placeholder"><p>Partner coming soon</p></div>
-      <div class="partner-placeholder"><p>Partner coming soon</p></div>
-      <div class="partner-placeholder"><p>Partner coming soon</p></div>
-      <div class="partner-placeholder"><p>Partner coming soon</p></div>
+    <div class="work-strip-divider"></div>
+    <div class="work-strip-col">
+      <span class="section-label">Relationships</span>
+      <p class="work-strip-text">Built over 15 years across hotel investment, operations, and capital markets. Partner logos coming soon.</p>
     </div>
   </div>
 </section>
@@ -1178,11 +1170,11 @@
     <span class="section-label" style="display:block;margin-bottom:16px;">Get in Touch</span>
     <h2 class="section-title">Start with a scoping call.</h2>
     <p class="section-body" style="margin:0 auto 0;">No proposals, no pitches. A direct conversation about your deal, your portfolio, or your question — and whether we're the right fit to help.</p>
-    <form class="contact-form" onsubmit="return false;">
+    <form class="contact-form" id="contactForm" onsubmit="return sendContactEmail(event);">
       <div class="form-row">
         <div class="form-group">
           <label for="name">Name</label>
-          <input type="text" id="name" placeholder="Your name">
+          <input type="text" id="name" placeholder="Your name" required>
         </div>
         <div class="form-group">
           <label for="org">Organization</label>
@@ -1192,7 +1184,7 @@
       <div class="form-row">
         <div class="form-group">
           <label for="email">Email</label>
-          <input type="email" id="email" placeholder="you@company.com">
+          <input type="email" id="email" placeholder="you@company.com" required>
         </div>
         <div class="form-group">
           <label for="role">I am a</label>
@@ -1213,6 +1205,7 @@
         <textarea id="message" placeholder="Briefly describe your situation, asset type, and what kind of support you're looking for…"></textarea>
       </div>
       <button class="form-submit" type="submit">Send Message</button>
+      <p class="form-note" id="formNote">This opens your email app with a pre-filled message to michael@mcladvisor.com.</p>
     </form>
     <div style="margin-top:48px;padding-top:40px;border-top:1px solid rgba(184,150,62,0.2);display:flex;justify-content:center;gap:64px;">
       <div>
@@ -1236,8 +1229,8 @@
     <li><a href="#about-firm">About</a></li>
     <li><a href="#services">Services</a></li>
     <li><a href="#serve">Who We Serve</a></li>
-    <li><a href="#lender">Lender Advisory</a></li>
-    <li><a href="#independent">Independent Advisor</a></li>
+    <li><a href="lender-advisory.html">Lender Advisory</a></li>
+    <li><a href="independent-advisor.html">Independent Advisor</a></li>
     <li><a href="#fees">Fees</a></li>
     <li><a href="#about-bio">Team</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -1246,6 +1239,40 @@
 </footer>
 
 <script>
+  // ── Contact form → mailto ──
+  function sendContactEmail(evt) {
+    evt.preventDefault();
+
+    const name    = document.getElementById('name').value.trim();
+    const org     = document.getElementById('org').value.trim();
+    const email   = document.getElementById('email').value.trim();
+    const role    = document.getElementById('role').value;
+    const message = document.getElementById('message').value.trim();
+
+    if (!name || !email) {
+      const note = document.getElementById('formNote');
+      note.textContent = 'Please fill in your name and email so Michael can reply.';
+      note.style.color = '#B8963E';
+      return false;
+    }
+
+    const subject = `New Inquiry — ${name}${org ? ' (' + org + ')' : ''}`;
+    const bodyLines = [
+      `Name: ${name}`,
+      org ? `Organization: ${org}` : null,
+      `Email: ${email}`,
+      role ? `Role: ${role}` : null,
+      '',
+      'What they\'re working on:',
+      message || '(no details provided)'
+    ].filter(Boolean);
+
+    const mailtoUrl = `mailto:michael@mcladvisor.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyLines.join('\n'))}`;
+
+    window.location.href = mailtoUrl;
+    return false;
+  }
+
   // ── Accordion ──
   function toggleCard(id) {
     const card = document.getElementById(id);

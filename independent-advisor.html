@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Independent & Third-Party Advisory — MCL Advisors</title>
+<meta property="og:title" content="Independent & Third-Party Advisory — MCL Advisors" />
+<meta property="og:description" content="An unconflicted, expert read for disputes, lender-borrower disagreements, and multi-party hotel transactions." />
+<meta property="og:image" content="mcllogostackeddarkweb.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="mcllogostackeddarkweb.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #B8963E;
+    --gold-light: #D4AF6A;
+    --ink: #1A1A18;
+    --slate: #4A4845;
+    --ash: #8A8680;
+    --paper: #FAFAF8;
+    --white: #FFFFFF;
+    --rule: 1px solid var(--gold);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    color: var(--ink);
+    background: var(--white);
+    font-size: 15px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 48px;
+    background: rgba(255,255,255,0.96);
+    backdrop-filter: blur(8px);
+    border-bottom: var(--rule);
+  }
+  .nav-logo img { height: 36px; display: block; }
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+    align-items: center;
+  }
+  .nav-links a {
+    font-family: 'Jost', sans-serif;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--slate);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-links a.active { color: var(--gold); }
+  .nav-cta {
+    font-family: 'Jost', sans-serif;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-decoration: none;
+    border: 1px solid var(--gold);
+    padding: 8px 20px;
+    transition: all 0.2s;
+  }
+  .nav-cta:hover { background: var(--gold); color: var(--white); }
+
+  /* ── SHARED SECTION STYLES ── */
+  section { padding: 100px 48px; }
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+    display: block;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 300;
+    line-height: 1.15;
+    color: var(--ink);
+    margin-bottom: 20px;
+  }
+  .section-title em { font-style: italic; color: var(--gold); }
+  .section-body {
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--slate);
+    max-width: 620px;
+  }
+  .gold-rule {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, var(--gold) 0%, transparent 100%);
+    margin-bottom: 64px;
+  }
+
+  /* ── SUBPAGE: PAGE HEADER ── */
+  .page-header {
+    padding: 160px 48px 80px;
+    text-align: center;
+    background: var(--paper);
+    border-bottom: var(--rule);
+  }
+  .page-header-inner { max-width: 800px; margin: 0 auto; }
+  .page-breadcrumb {
+    font-size: 11px; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--ash);
+    margin-bottom: 24px; display: block;
+  }
+  .page-breadcrumb a { color: var(--ash); text-decoration: none; transition: color 0.2s; }
+  .page-breadcrumb a:hover { color: var(--gold); }
+  .page-header-eyebrow {
+    font-size: 10px; letter-spacing: 0.32em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 20px; display: block;
+  }
+  .page-header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 5.5vw, 64px);
+    font-weight: 300; line-height: 1.1;
+    color: var(--ink); margin-bottom: 24px;
+  }
+  .page-header h1 em { font-style: italic; color: var(--gold); }
+  .page-header p {
+    font-size: 15px; color: var(--slate);
+    max-width: 600px; margin: 0 auto; line-height: 1.8;
+  }
+
+  /* ── INDEPENDENT ADVISORY ── */
+  .independent { background: var(--white); padding: 100px 48px; }
+  .independent-pillars {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 2px; margin-top: 0;
+    background: #E8E6E0; text-align: left;
+  }
+  .ind-pillar { background: var(--white); padding: 40px 32px; }
+  .ind-pillar-label {
+    font-size: 10px; letter-spacing: 0.26em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 16px; display: block;
+  }
+  .ind-pillar-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 21px; color: var(--ink); margin-bottom: 12px; line-height: 1.3;
+  }
+  .ind-pillar-body { font-size: 13px; color: var(--slate); line-height: 1.7; }
+
+  /* ── PRINCIPLES BAND ── */
+  .principles { background: var(--ink); padding: 100px 48px; }
+  .principles .section-label { color: var(--gold-light); }
+  .principles .section-title { color: var(--white); }
+  .principles .section-body { color: rgba(255,255,255,0.55); }
+  .principles .gold-rule { background: linear-gradient(90deg, var(--gold-light) 0%, transparent 100%); }
+  .principles-list {
+    margin-top: 48px;
+    display: flex; flex-direction: column;
+  }
+  .principle-row {
+    display: grid; grid-template-columns: 220px 1fr;
+    gap: 32px; padding: 28px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .principle-row:first-child { padding-top: 0; }
+  .principle-label {
+    font-size: 12px; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--gold-light);
+  }
+  .principle-text { font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.8; }
+
+  /* ── SUBPAGE: CTA BAND ── */
+  .page-cta-band {
+    background: var(--paper);
+    padding: 90px 48px;
+    text-align: center;
+    border-top: 1px solid #E8E6E0;
+  }
+  .page-cta-band h2 { margin-bottom: 16px; }
+  .page-cta-band .section-body { margin: 0 auto 32px; }
+  .btn-primary {
+    display: inline-block;
+    font-family: 'Jost', sans-serif;
+    font-size: 11px; font-weight: 400;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--white);
+    background: var(--ink);
+    padding: 14px 36px;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .btn-primary:hover { background: var(--gold); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink); padding: 48px;
+    display: flex; align-items: center;
+    justify-content: space-between;
+    border-top: var(--rule);
+  }
+  .footer-logo img { height: 52px; display: block; }
+  .footer-links {
+    display: flex; gap: 28px; list-style: none;
+  }
+  .footer-links a {
+    font-size: 11px; letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--gold); }
+  .footer-copy {
+    font-size: 11px; color: rgba(255,255,255,0.25);
+    letter-spacing: 0.08em;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    section, .independent, .principles, .page-cta-band { padding: 72px 24px; }
+    .page-header { padding: 140px 24px 60px; }
+    .independent-pillars { grid-template-columns: 1fr; }
+    .principle-row { grid-template-columns: 1fr; gap: 8px; }
+    footer { flex-direction: column; gap: 24px; text-align: center; }
+    .footer-links { flex-wrap: wrap; justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <a href="index.html"><img src="mcllogoprimarydarkweb.png" alt="MCL Advisors" /></a>
+  </div>
+  <ul class="nav-links">
+    <li><a href="index.html#about-firm">About</a></li>
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="index.html#serve">Who We Serve</a></li>
+    <li><a href="lender-advisory.html">Lender Advisory</a></li>
+    <li><a href="independent-advisor.html" class="active">Independent Advisor</a></li>
+    <li><a href="index.html#fees">Fees</a></li>
+    <li><a href="index.html#about-bio">Team</a></li>
+  </ul>
+  <a href="index.html#contact" class="nav-cta">Get in Touch</a>
+</nav>
+
+<!-- PAGE HEADER -->
+<header class="page-header">
+  <div class="page-header-inner">
+    <span class="page-breadcrumb"><a href="index.html">MCL Advisors</a> &nbsp;/&nbsp; Independent Advisor</span>
+    <span class="page-header-eyebrow">Third-Party & Independent Advisory</span>
+    <h1>When you need a voice with <em>no agenda.</em></h1>
+    <p>In complex transactions, the most valuable advisor in the room is often the one who owes nothing to any party. MCL Advisors serves as an independent third-party opinion when the deal needs a credible, unconflicted read.</p>
+  </div>
+</header>
+
+<!-- PILLARS -->
+<section class="independent">
+  <div class="section-inner">
+    <div class="independent-pillars">
+      <div class="ind-pillar">
+        <span class="ind-pillar-label">Dispute & Disagreement</span>
+        <div class="ind-pillar-title">When parties can't agree on value or viability</div>
+        <p class="ind-pillar-body">We provide independent operational and market analysis that both sides can reference — with full transparency on our methodology, so the conclusion is something both parties can stand on.</p>
+      </div>
+      <div class="ind-pillar">
+        <span class="ind-pillar-label">Lender vs. Borrower</span>
+        <div class="ind-pillar-title">Asset assessment in troubled situations</div>
+        <p class="ind-pillar-body">When a workout requires clarity on what the asset is actually worth — and what it would cost to fix — we deliver the honest read, grounded in operating reality rather than either side's position.</p>
+      </div>
+      <div class="ind-pillar">
+        <span class="ind-pillar-label">Multi-Party Transactions</span>
+        <div class="ind-pillar-title">Brands, investors, and operators at the same table</div>
+        <p class="ind-pillar-body">We help complex deals move forward by providing a shared, expert frame of reference no single party could credibly provide on their own.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRINCIPLES -->
+<section class="principles">
+  <div class="section-inner">
+    <div class="gold-rule"></div>
+    <span class="section-label">How We Approach It</span>
+    <h2 class="section-title">Independence isn't a tagline — it's a structure.</h2>
+    <p class="section-body">A few principles guide every third-party or mediation-style engagement.</p>
+    <div class="principles-list">
+      <div class="principle-row">
+        <div class="principle-label">No Mandate to Sell</div>
+        <div class="principle-text">We don't represent a brokerage, lender, or brand. Our conclusions aren't shaped by a transaction we need to close.</div>
+      </div>
+      <div class="principle-row">
+        <div class="principle-label">Transparent Methodology</div>
+        <div class="principle-text">Every assessment shows its work — assumptions, comp sets, and data sources are disclosed so all parties can evaluate the reasoning, not just the conclusion.</div>
+      </div>
+      <div class="principle-row">
+        <div class="principle-label">Operator-Grounded</div>
+        <div class="principle-text">Our read comes from having run the operational side of hotel deals, not just modeled them — which is what makes the opinion credible to both finance and operations people.</div>
+      </div>
+      <div class="principle-row">
+        <div class="principle-label">Scoped Engagement</div>
+        <div class="principle-text">We agree on scope, access, and deliverable format upfront — with both parties, where applicable — so the process itself isn't a point of contention.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="page-cta-band">
+  <div class="section-inner">
+    <span class="section-label">Get in Touch</span>
+    <h2 class="section-title">Need an unconflicted read on a situation?</h2>
+    <p class="section-body">No proposals, no pitches. A direct conversation about the deal, the dispute, or the question — and whether we're the right fit to help.</p>
+    <a href="index.html#contact" class="btn-primary">Start a Conversation</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+    <img src="mcllogostackedlight.png" alt="MCL Advisors" />
+  </div>
+  <ul class="footer-links">
+    <li><a href="index.html#about-firm">About</a></li>
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="index.html#serve">Who We Serve</a></li>
+    <li><a href="lender-advisory.html">Lender Advisory</a></li>
+    <li><a href="independent-advisor.html">Independent Advisor</a></li>
+    <li><a href="index.html#fees">Fees</a></li>
+    <li><a href="index.html#about-bio">Team</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <div class="footer-copy">© 2026 MCL Advisors</div>
+</footer>
+
+</body>
+</html>

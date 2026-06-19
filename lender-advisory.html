@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lender & Special Servicer Advisory — MCL Advisors</title>
+<meta property="og:title" content="Lender & Special Servicer Advisory — MCL Advisors" />
+<meta property="og:description" content="Hospitality expertise for troubled hotel loans — asset assessment, workout strategy, and disposition support for CMBS and bridge lenders." />
+<meta property="og:image" content="mcllogostackeddarkweb.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="mcllogostackeddarkweb.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #B8963E;
+    --gold-light: #D4AF6A;
+    --ink: #1A1A18;
+    --slate: #4A4845;
+    --ash: #8A8680;
+    --paper: #FAFAF8;
+    --white: #FFFFFF;
+    --rule: 1px solid var(--gold);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    color: var(--ink);
+    background: var(--white);
+    font-size: 15px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 48px;
+    background: rgba(255,255,255,0.96);
+    backdrop-filter: blur(8px);
+    border-bottom: var(--rule);
+  }
+  .nav-logo img { height: 36px; display: block; }
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+    align-items: center;
+  }
+  .nav-links a {
+    font-family: 'Jost', sans-serif;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--slate);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-links a.active { color: var(--gold); }
+  .nav-cta {
+    font-family: 'Jost', sans-serif;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-decoration: none;
+    border: 1px solid var(--gold);
+    padding: 8px 20px;
+    transition: all 0.2s;
+  }
+  .nav-cta:hover { background: var(--gold); color: var(--white); }
+
+  /* ── SHARED SECTION STYLES ── */
+  section { padding: 100px 48px; }
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+    display: block;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 300;
+    line-height: 1.15;
+    color: var(--ink);
+    margin-bottom: 20px;
+  }
+  .section-title em { font-style: italic; color: var(--gold); }
+  .section-body {
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--slate);
+    max-width: 620px;
+  }
+  .gold-rule {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, var(--gold) 0%, transparent 100%);
+    margin-bottom: 64px;
+  }
+
+  /* ── SUBPAGE: PAGE HEADER ── */
+  .page-header {
+    padding: 160px 48px 80px;
+    text-align: center;
+    background: var(--ink);
+    border-bottom: var(--rule);
+  }
+  .page-header-inner { max-width: 800px; margin: 0 auto; }
+  .page-breadcrumb {
+    font-size: 11px; letter-spacing: 0.18em;
+    text-transform: uppercase; color: rgba(255,255,255,0.4);
+    margin-bottom: 24px; display: block;
+  }
+  .page-breadcrumb a { color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s; }
+  .page-breadcrumb a:hover { color: var(--gold-light); }
+  .page-header-eyebrow {
+    font-size: 10px; letter-spacing: 0.32em;
+    text-transform: uppercase; color: var(--gold-light);
+    margin-bottom: 20px; display: block;
+  }
+  .page-header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 5.5vw, 64px);
+    font-weight: 300; line-height: 1.1;
+    color: var(--white); margin-bottom: 24px;
+  }
+  .page-header h1 em { font-style: italic; color: var(--gold-light); }
+  .page-header p {
+    font-size: 15px; color: rgba(255,255,255,0.6);
+    max-width: 600px; margin: 0 auto; line-height: 1.8;
+  }
+
+  /* ── LENDER / CMBS ── */
+  .lender { background: var(--white); padding: 100px 48px; }
+  .lender-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 64px; margin-top: 0; align-items: start;
+  }
+  .lender-list { list-style: none; display: flex; flex-direction: column; }
+  .lender-list li {
+    padding: 24px 0;
+    border-bottom: 1px solid #E8E6E0;
+    display: grid; grid-template-columns: 28px 1fr;
+    gap: 16px; align-items: start;
+  }
+  .lender-list li:first-child { padding-top: 0; }
+  .li-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px; color: var(--gold);
+    font-style: italic; padding-top: 1px;
+  }
+  .li-text strong {
+    display: block; font-size: 14px; font-weight: 500;
+    letter-spacing: 0.04em; color: var(--ink); margin-bottom: 6px;
+  }
+  .li-text p { font-size: 13px; color: var(--slate); line-height: 1.7; }
+  .lender-callout {
+    background: var(--ink);
+    padding: 48px;
+    position: sticky; top: 110px;
+  }
+  .lender-callout-label {
+    font-size: 10px; letter-spacing: 0.26em;
+    text-transform: uppercase; color: var(--gold-light);
+    margin-bottom: 20px; display: block;
+  }
+  .lender-callout-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px; font-weight: 300;
+    color: var(--white); line-height: 1.25; margin-bottom: 18px;
+  }
+  .lender-callout-body {
+    font-size: 13px; color: rgba(255,255,255,0.55);
+    line-height: 1.8; margin-bottom: 14px;
+  }
+  .lender-callout a {
+    display: inline-block; margin-top: 12px;
+    font-size: 11px; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--gold-light);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(212,175,106,0.4);
+    padding-bottom: 2px; transition: border-color 0.2s;
+  }
+  .lender-callout a:hover { border-color: var(--gold-light); }
+
+  /* ── PROCESS STEPS ── */
+  .process { background: var(--paper); padding: 100px 48px; }
+  .process-steps {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 2px; background: #E8E6E0; margin-top: 56px;
+  }
+  .process-step { background: var(--white); padding: 32px 28px; }
+  .process-step-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic; font-size: 14px; color: var(--gold);
+    margin-bottom: 14px; display: block;
+  }
+  .process-step-title {
+    font-size: 13px; font-weight: 500; letter-spacing: 0.04em;
+    color: var(--ink); margin-bottom: 8px;
+  }
+  .process-step-body { font-size: 12px; color: var(--slate); line-height: 1.6; }
+
+  /* ── SUBPAGE: CTA BAND ── */
+  .page-cta-band {
+    background: var(--ink);
+    padding: 90px 48px;
+    text-align: center;
+  }
+  .page-cta-band .section-label { color: var(--gold-light); }
+  .page-cta-band h2 { color: var(--white); margin-bottom: 16px; }
+  .page-cta-band .section-body { color: rgba(255,255,255,0.55); margin: 0 auto 32px; }
+  .btn-primary {
+    display: inline-block;
+    font-family: 'Jost', sans-serif;
+    font-size: 11px; font-weight: 400;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink);
+    background: var(--gold-light);
+    padding: 14px 36px;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .btn-primary:hover { background: var(--white); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink); padding: 48px;
+    display: flex; align-items: center;
+    justify-content: space-between;
+    border-top: var(--rule);
+  }
+  .footer-logo img { height: 52px; display: block; }
+  .footer-links {
+    display: flex; gap: 28px; list-style: none;
+  }
+  .footer-links a {
+    font-size: 11px; letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--gold); }
+  .footer-copy {
+    font-size: 11px; color: rgba(255,255,255,0.25);
+    letter-spacing: 0.08em;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    section, .lender, .process, .page-cta-band { padding: 72px 24px; }
+    .page-header { padding: 140px 24px 60px; }
+    .lender-grid { grid-template-columns: 1fr; gap: 48px; }
+    .lender-callout { position: static; }
+    .process-steps { grid-template-columns: 1fr 1fr; }
+    footer { flex-direction: column; gap: 24px; text-align: center; }
+    .footer-links { flex-wrap: wrap; justify-content: center; }
+  }
+  @media (max-width: 600px) {
+    .process-steps { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <a href="index.html"><img src="mcllogoprimarydarkweb.png" alt="MCL Advisors" /></a>
+  </div>
+  <ul class="nav-links">
+    <li><a href="index.html#about-firm">About</a></li>
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="index.html#serve">Who We Serve</a></li>
+    <li><a href="lender-advisory.html" class="active">Lender Advisory</a></li>
+    <li><a href="independent-advisor.html">Independent Advisor</a></li>
+    <li><a href="index.html#fees">Fees</a></li>
+    <li><a href="index.html#about-bio">Team</a></li>
+  </ul>
+  <a href="index.html#contact" class="nav-cta">Get in Touch</a>
+</nav>
+
+<!-- PAGE HEADER -->
+<header class="page-header">
+  <div class="page-header-inner">
+    <span class="page-breadcrumb"><a href="index.html">MCL Advisors</a> &nbsp;/&nbsp; Lender Advisory</span>
+    <span class="page-header-eyebrow">Lender & Special Servicer Advisory</span>
+    <h1>Hospitality expertise for <em>troubled situations.</em></h1>
+    <p>CMBS special servicers and lenders face hotel problems they weren't built to solve. We provide the operational expertise to understand what you're holding — and what to do with it.</p>
+  </div>
+</header>
+
+<!-- LENDER DETAIL -->
+<section class="lender">
+  <div class="section-inner">
+    <div class="lender-grid">
+      <ul class="lender-list">
+        <li><span class="li-num">i.</span><div class="li-text"><strong>Asset Assessment</strong><p>Independent operational and market review of the collateral. Is this hotel worth saving, repositioning, or disposing of? We evaluate physical condition, competitive position, brand fit, and realistic performance potential — not just the trailing financials.</p></div></li>
+        <li><span class="li-num">ii.</span><div class="li-text"><strong>Borrower Evaluation</strong><p>Separating the asset problem from the operator problem — critical before deciding on a workout path. A struggling hotel under a capable operator calls for a different remedy than a sound asset under a struggling one.</p></div></li>
+        <li><span class="li-num">iii.</span><div class="li-text"><strong>Workout Strategy</strong><p>Deed-in-lieu, note sale, receivership, brand or management change — we help structure the right path given the asset's reality, balancing recovery value against time and execution risk.</p></div></li>
+        <li><span class="li-num">iv.</span><div class="li-text"><strong>Receivership Support</strong><p>Expert hospitality advisor to the receiver or the court — providing operational grounding through the process, from interim management oversight to reporting.</p></div></li>
+        <li><span class="li-num">v.</span><div class="li-text"><strong>Disposition Readiness</strong><p>If you're selling the note or the asset, we help prepare it — diligence packaging, asset positioning, and buyer-facing materials built for a faster, cleaner close.</p></div></li>
+      </ul>
+      <div class="lender-callout">
+        <span class="lender-callout-label">Why MCL for CMBS</span>
+        <div class="lender-callout-title">Most special servicers don't have hospitality depth in-house.</div>
+        <p class="lender-callout-body">Hotels are operationally complex collateral. A room count and an STR report don't tell you whether the management team is the problem, whether the flag is right for the market, or what a realistic stabilization timeline looks like.</p>
+        <p class="lender-callout-body">MCL speaks both languages — the real estate finance side and the operator side — which is rare. That's the gap we fill.</p>
+        <a href="index.html#contact">Discuss a Situation →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process">
+  <div class="section-inner">
+    <div class="gold-rule"></div>
+    <span class="section-label">How It Works</span>
+    <h2 class="section-title">A clear path from collateral to decision.</h2>
+    <p class="section-body">Engagements scope quickly — most asset assessments are turned around in days, not weeks.</p>
+    <div class="process-steps">
+      <div class="process-step">
+        <span class="process-step-num">01</span>
+        <div class="process-step-title">Initial Review</div>
+        <p class="process-step-body">We review loan documents, servicing notes, and recent financials to scope the engagement.</p>
+      </div>
+      <div class="process-step">
+        <span class="process-step-num">02</span>
+        <div class="process-step-title">Site & Market Assessment</div>
+        <p class="process-step-body">Property tour, operator interview, and competitive set analysis grounded in current market conditions.</p>
+      </div>
+      <div class="process-step">
+        <span class="process-step-num">03</span>
+        <div class="process-step-title">Findings & Options</div>
+        <p class="process-step-body">A clear, written assessment of asset viability and a ranked set of workout paths with trade-offs.</p>
+      </div>
+      <div class="process-step">
+        <span class="process-step-num">04</span>
+        <div class="process-step-title">Execution Support</div>
+        <p class="process-step-body">Ongoing advisory through receivership, disposition, or transition — as deep as the situation requires.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="page-cta-band">
+  <div class="section-inner">
+    <span class="section-label">Get in Touch</span>
+    <h2 class="section-title">Have a hotel loan that needs a closer look?</h2>
+    <p class="section-body">No proposals, no pitches. A direct, confidential conversation about the asset and what it actually needs.</p>
+    <a href="index.html#contact" class="btn-primary">Discuss a Situation</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+    <img src="mcllogostackedlight.png" alt="MCL Advisors" />
+  </div>
+  <ul class="footer-links">
+    <li><a href="index.html#about-firm">About</a></li>
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="index.html#serve">Who We Serve</a></li>
+    <li><a href="lender-advisory.html">Lender Advisory</a></li>
+    <li><a href="independent-advisor.html">Independent Advisor</a></li>
+    <li><a href="index.html#fees">Fees</a></li>
+    <li><a href="index.html#about-bio">Team</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <div class="footer-copy">© 2026 MCL Advisors</div>
+</footer>
+
+</body>
+</html>
