@@ -276,7 +276,7 @@
   #services { background: var(--white); }
   .services-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 2px;
     margin-top: 60px;
     background: #E8E6E0;
@@ -286,7 +286,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 28px 32px;
+    padding: 32px 40px;
     cursor: pointer;
     user-select: none;
     transition: background 0.2s;
@@ -296,13 +296,13 @@
   .service-header-left { display: flex; align-items: flex-start; gap: 16px; }
   .service-num {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 13px; font-style: italic;
+    font-size: 15px; font-style: italic; font-weight: 600;
     color: var(--gold); flex-shrink: 0; padding-top: 3px;
   }
   .service-header-text {}
   .service-title {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 20px; font-weight: 400;
+    font-size: 24px; font-weight: 600;
     color: var(--ink); margin-bottom: 4px; line-height: 1.2;
   }
   .service-sub {
@@ -314,7 +314,7 @@
     flex-shrink: 0; transition: transform 0.25s; margin-left: 12px;
   }
   .service-card.open .service-chevron { transform: rotate(180deg); }
-  .service-card-body { display: none; padding: 28px 32px 32px 32px; }
+  .service-card-body { display: none; padding: 28px 40px 36px 40px; }
   .service-card.open .service-card-body { display: block; }
   .service-card-body ul { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px; }
   .service-card-body ul li {
@@ -729,10 +729,6 @@
   <ul class="nav-links">
     <li><a href="#about-firm">About</a></li>
     <li><a href="#services">Services</a></li>
-    <li><a href="#serve">Who We Serve</a></li>
-    <li><a href="lender-advisory.html">Lender Advisory</a></li>
-    <li><a href="independent-advisor.html">Independent Advisor</a></li>
-    <li><a href="#fees">Fees</a></li>
     <li><a href="#about-bio">Team</a></li>
   </ul>
   <a href="#contact" class="nav-cta">Get in Touch</a>
@@ -769,7 +765,7 @@
 
 <!-- POSITIONING BAND -->
 <div class="positioning">
-  <p>From acquisition to disposition — and everything between. Transaction advisory, operator selection, ongoing investment management, and asset intelligence, structured to the deal.</p>
+  <p>From the deal to the transition to the hold — Deal & Capital Event Advisory, Technical Services & Pre-Opening, and Asset Advisory, structured to the lifecycle.</p>
 </div>
 
 <!-- ABOUT FIRM -->
@@ -850,8 +846,8 @@
           <div class="service-header-left">
             <span class="service-num">01</span>
             <div class="service-header-text">
-              <div class="service-title">Transaction Advisory</div>
-              <div class="service-sub">Critical Path · Diligence · Disposition · Refinance · M&A</div>
+              <div class="service-title">Deal & Capital Event Advisory</div>
+              <div class="service-sub">The Event — Diligence · Disposition · Refinance · M&A · Workouts</div>
             </div>
           </div>
           <span class="service-chevron">▼</span>
@@ -859,16 +855,24 @@
         <div class="service-card-body">
           <ul>
             <li><b>Critical Path & Diligence Management</b> — Structuring the transaction timeline, coordinating all diligence workstreams, and keeping deals on track from LOI through close.</li>
-            <li><b>Disposition Preparation</b> — Data room organization, asset documentation, sell-side positioning, and broker coordination to maximize price and speed to close.</li>
-            <li><b>Refinance & Recapitalization</b> — Lender package preparation, DSCR covenant review, and capital structure optimization for refi and recap events.</li>
-            <li><b>M&A & Capital Events</b> — Portfolio-level transaction support, JV structuring, and advisory through complex multi-asset or corporate-level deals.</li>
+            <li><b>Disposition, Refinance & Recapitalization</b> — Data room organization, sell-side positioning, lender package prep, DSCR covenant review, and capital structure optimization.</li>
+            <li><b>M&A & Portfolio-Level Capital Events</b> — JV structuring and advisory through complex multi-asset or corporate-level deals.</li>
+            <li><b>Workout Strategy & Special Servicer Advisory</b> — Asset and borrower evaluation, deed-in-lieu, note sale, receivership, and disposition readiness for troubled loans — CMBS and bridge.</li>
+            <li><b>Broker Support & Closing</b> — Diligence cleanup, OM preparation, and closing support. White-label available.</li>
           </ul>
+          <div class="service-tags">
+            <span class="service-tag">CMBS</span>
+            <span class="service-tag">Bridge</span>
+            <span class="service-tag">Special Servicers</span>
+            <span class="service-tag">Brokers — White-Label</span>
+          </div>
           <div class="dealfolder-link">
             Manage your deal in <strong>DealFolder Transaction Mode</strong> — Critical Path tracking, Diligence Tracker, and deal room in one place.<br>
             <a href="https://deal-folder.vercel.app" target="_blank">Open Diligence Tracker →</a>
             &nbsp;&nbsp;
             <a href="https://deal-folder.vercel.app" target="_blank">Open Critical Path →</a>
           </div>
+          <p style="margin-top:18px;font-size:13px;"><a href="lender-advisory.html" style="color:var(--gold);">Lender & Special Servicer Advisory, in depth →</a></p>
         </div>
       </div>
 
@@ -877,17 +881,17 @@
           <div class="service-header-left">
             <span class="service-num">02</span>
             <div class="service-header-text">
-              <div class="service-title">Operator & Brand Selection</div>
-              <div class="service-sub">Management Search · Contract Negotiation · Flag Strategy</div>
+              <div class="service-title">Technical Services & Pre-Opening</div>
+              <div class="service-sub">The Transition — Ground-Up Feasibility · Conversion · Pre-Opening Ramp</div>
             </div>
           </div>
           <span class="service-chevron">▼</span>
         </div>
         <div class="service-card-body">
           <ul>
-            <li><b>Operator Search & Evaluation</b> — Sourcing, RFP process, and structured interview across full-service, select-service, and lifestyle segments.</li>
-            <li><b>Management Agreement Negotiation</b> — Fee structures, performance thresholds, termination rights, and key-man provisions — aligned to owner outcomes.</li>
             <li><b>Brand & Flag Strategy</b> — Franchise evaluation, flag selection, PIP scope negotiation, and brand conversion planning.</li>
+            <li><b>Ground-Up Feasibility</b> — Market and brand fit review during design and entitlement, ahead of construction.</li>
+            <li><b>Pre-Opening Readiness</b> — Staffing, sales, and systems ramp-up through the 12 months before doors open — for conversions and new builds alike.</li>
             <li><b>Transition Management</b> — Coordinating operator hand-off to protect NOI and guest continuity through ownership or management change.</li>
           </ul>
         </div>
@@ -898,98 +902,21 @@
           <div class="service-header-left">
             <span class="service-num">03</span>
             <div class="service-header-text">
-              <div class="service-title">Ongoing Investment Management</div>
-              <div class="service-sub">Portfolio Oversight · Performance Monitoring · Capital Planning</div>
+              <div class="service-title">Asset Advisory</div>
+              <div class="service-sub">The Hold — Performance · Operator Search · Capital Planning</div>
             </div>
           </div>
           <span class="service-chevron">▼</span>
         </div>
         <div class="service-card-body">
           <ul>
-            <li><b>Portfolio Advisory Retainer</b> — Ongoing coverage across active deal pipelines, asset reviews, and strategic decisions for owners managing multiple assets.</li>
             <li><b>Performance Monitoring</b> — RevPAR tracking, operator accountability, and NOI benchmarking against underwriting with clear escalation protocols.</li>
+            <li><b>Operator Search & Management Agreement Negotiation</b> — Sourcing, RFP process, and fee/termination/key-man terms — for owners selecting an operator, or operators pursuing new contracts.</li>
             <li><b>Capital Planning & CapEx Oversight</b> — FF&E reserve strategy, PIP execution, and renovation scope management aligned to hold-period objectives.</li>
             <li><b>Lender & Stakeholder Reporting</b> — Investor and lender reporting packages, covenant compliance, and variance analysis.</li>
           </ul>
-        </div>
-      </div>
-
-      <div class="service-card" id="card-4">
-        <div class="service-card-header" onclick="toggleCard('card-4')">
-          <div class="service-header-left">
-            <span class="service-num">04</span>
-            <div class="service-header-text">
-              <div class="service-title">Asset Intelligence & Data</div>
-              <div class="service-sub">Market Diligence · Comp Analysis · Tours · Document Abstraction</div>
-            </div>
-          </div>
-          <span class="service-chevron">▼</span>
-        </div>
-        <div class="service-card-body">
-          <ul>
-            <li><b>Market Diligence & Comp Analysis</b> — STR analysis, comp set evaluation, market penetration assessment, and demand generator mapping built for investment decisions.</li>
-            <li><b>Property Tours & Site Assessment</b> — Boots-on-the-ground property evaluation with an operator's eye — condition, positioning, and opportunity gaps.</li>
-            <li><b>Contract & Document Abstraction</b> — AI-powered extraction of key terms from management agreements, franchise agreements, loan documents, and ground leases.</li>
-            <li><b>Portfolio Data Infrastructure</b> — Workflow design and data architecture for operators and owners managing 10–100+ assets.</li>
-          </ul>
-          <div class="dealfolder-link">
-            Built on <strong>DealFolder</strong> — our proprietary asset intelligence platform for hotel assets.
-            <br><a href="https://deal-folder.vercel.app" target="_blank">See the demo →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="service-card" id="card-5">
-        <div class="service-card-header" onclick="toggleCard('card-5')">
-          <div class="service-header-left">
-            <span class="service-num">05</span>
-            <div class="service-header-text">
-              <div class="service-title">Transaction Support for Brokers</div>
-              <div class="service-sub">Diligence Cleanup · OM Preparation · Closing Support</div>
-            </div>
-          </div>
-          <span class="service-chevron">▼</span>
-        </div>
-        <div class="service-card-body">
-          <ul>
-            <li><b>Diligence Cleanup</b> — Stepping in when a deal is messy or stalled — organizing workstreams and closing open items so the deal can move forward.</li>
-            <li><b>Offering Memorandum Preparation</b> — Hospitality-specific OMs built with real operational knowledge — not just numbers, but the context that supports price.</li>
-            <li><b>Closing Support</b> — Expert coordination through the final stretch: managing conditions, tracking open items, and keeping all parties aligned.</li>
-            <li><b>White-Label Ready</b> — We work behind the scenes. Your client relationship stays yours.</li>
-          </ul>
-          <div class="service-tags">
-            <span class="service-tag">For Brokers</span>
-            <span class="service-tag">Confidential</span>
-            <span class="service-tag">Project Basis</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="service-card" id="card-6">
-        <div class="service-card-header" onclick="toggleCard('card-6')">
-          <div class="service-header-left">
-            <span class="service-num">06</span>
-            <div class="service-header-text">
-              <div class="service-title">Lender & Special Servicer Advisory</div>
-              <div class="service-sub">Troubled Assets · CMBS · Workout Strategy · Receivership</div>
-            </div>
-          </div>
-          <span class="service-chevron">▼</span>
-        </div>
-        <div class="service-card-body">
-          <ul>
-            <li><b>Asset Assessment</b> — Independent operational and market review of the collateral. Is this hotel worth saving, repositioning, or disposing of?</li>
-            <li><b>Borrower Evaluation</b> — Separating the asset problem from the operator problem — critical before deciding on a workout path.</li>
-            <li><b>Workout Strategy</b> — Deed-in-lieu, note sale, receivership, brand or management change — structured to the asset's reality.</li>
-            <li><b>Receivership Support</b> — Expert hospitality advisor to the receiver or the court through the process.</li>
-            <li><b>Disposition Readiness</b> — Diligence preparation, asset positioning, and buyer-facing materials for note or asset sales.</li>
-          </ul>
-          <div class="service-tags">
-            <span class="service-tag">CMBS</span>
-            <span class="service-tag">Bridge</span>
-            <span class="service-tag">Special Servicers</span>
-            <span class="service-tag">Third-Party Opinion</span>
-          </div>
+          <p style="margin-top:14px;font-size:13.5px;color:var(--slate);">Serves both sides of the relationship — owners overseeing an operator, and operators managing their own portfolio performance and owner reporting.</p>
+          <p style="margin-top:14px;font-size:13px;"><a href="independent-advisor.html" style="color:var(--gold);">Independent & Third-Party Advisory, in depth →</a></p>
         </div>
       </div>
 
@@ -999,93 +926,9 @@
 
 <!-- DEALFOLDER BAND -->
 <div class="dealfolder-band">
-  <p><strong>Introducing DealFolder</strong> — the asset intelligence platform built specifically for hotel investors. One permanent folder per asset, AI-powered document analysis, and institutional memory that transfers with the deal.</p>
+  <p><strong>Tools & Resources</strong> — powered by DealFolder, our asset intelligence platform, and customized to your project or your firm. Market diligence, comp analysis, property tours, AI-powered document abstraction, and portfolio data infrastructure for operators and owners managing 10–100+ assets. One permanent folder per asset, and institutional memory that transfers with the deal.</p>
   <a href="https://deal-folder.vercel.app" target="_blank">See it in action →</a>
 </div>
-
-<!-- WHO WE SERVE -->
-<section class="serve" id="serve">
-  <div class="section-inner">
-    <div class="gold-rule"></div>
-    <span class="section-label">Who We Serve</span>
-    <h2 class="section-title">Built for the people <em>in</em> the deal.</h2>
-    <p class="section-body">We engage across the full ecosystem — every party at the table has a different need, and we know how to meet each one.</p>
-    <div class="serve-grid">
-      <div class="serve-card">
-        <div class="serve-title">Brands & Flags</div>
-        <p class="serve-body">Conversion feasibility, franchisee evaluation, and market positioning to support brand growth decisions with operational grounding.</p>
-      </div>
-      <div class="serve-card">
-        <div class="serve-title">Brokers</div>
-        <p class="serve-body">Diligence cleanup, OM preparation, and closing support for brokers who need hospitality depth without adding headcount. White-label available.</p>
-      </div>
-      <div class="serve-card">
-        <div class="serve-title">Lenders & Special Servicers</div>
-        <p class="serve-body">Asset evaluation, workout strategy, and disposition support for troubled hotel loans — including CMBS and bridge scenarios.</p>
-      </div>
-      <div class="serve-card">
-        <div class="serve-title">Buyers & Investors</div>
-        <p class="serve-body">Pre-acquisition diligence, comp analysis, market studies, and brand evaluation before capital is committed.</p>
-      </div>
-      <div class="serve-card">
-        <div class="serve-title">Public Entities</div>
-        <p class="serve-body">Feasibility analysis, developer evaluation, and market studies for municipalities, authorities, and public-private partnerships.</p>
-      </div>
-      <div class="serve-card">
-        <div class="serve-title">Advisors & Counsel</div>
-        <p class="serve-body">Expert hospitality opinion for legal, financial, or restructuring advisors who need a credible, independent operator perspective.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- LENDER / INDEPENDENT — TEASER LINKS TO STANDALONE PAGES -->
-<section class="advisory-teasers" id="lender">
-  <div class="section-inner">
-    <div class="gold-rule"></div>
-    <span class="section-label">Specialized Engagements</span>
-    <h2 class="section-title">Two engagements that stand on their own.</h2>
-    <div class="teaser-grid">
-      <a href="lender-advisory.html" class="teaser-card teaser-dark">
-        <span class="teaser-label">Lender & Special Servicer Advisory</span>
-        <h3 class="teaser-title">Hospitality expertise for troubled situations.</h3>
-        <p class="teaser-body">CMBS special servicers and lenders face hotel problems they weren't built to solve. We provide the operational expertise to understand what you're holding — and what to do with it.</p>
-        <span class="teaser-link">Learn More →</span>
-      </a>
-      <a href="independent-advisor.html" class="teaser-card" id="independent">
-        <span class="teaser-label">Third-Party & Independent Advisory</span>
-        <h3 class="teaser-title">When you need a voice with no agenda.</h3>
-        <p class="teaser-body">In complex transactions, the most valuable advisor in the room is often the one who owes nothing to any party. An unconflicted, expert read when it matters most.</p>
-        <span class="teaser-link">Learn More →</span>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- FEES -->
-<section class="fees" id="fees">
-  <div class="section-inner">
-    <div class="gold-rule"></div>
-    <span class="section-label">How We Work</span>
-    <h2 class="section-title">Fee structure.</h2>
-    <p class="section-body">All engagements are fixed-fee and scoped in advance — no open-ended hourly billing.</p>
-    <div class="fees-grid">
-      <div class="fee-card">
-        <h4>Model A — Fixed Fee</h4>
-        <p>Flat, scoped upfront. Best for defined engagements: diligence support, data room preparation, refi packages with a clear end point.</p>
-      </div>
-      <div class="fee-card">
-        <h4>Model B — Fixed + Success Fee</h4>
-        <p>Modest fixed fee through diligence, plus a negotiated percentage at close. Fixed fee credited at closing. Most common structure.</p>
-      </div>
-      <div class="fee-card">
-        <h4>Model C — Monthly Retainer</h4>
-        <p>Fixed monthly for ongoing pipeline coverage and portfolio oversight. Best for investors with active deal flow across multiple assets.</p>
-      </div>
-    </div>
-    <p class="fees-note">Fees for transaction engagements are structured to the deal and charged at closing. Pricing confirmed in the scoping call.</p>
-  </div>
-</section>
 
 <!-- WORK & RELATIONSHIPS (compact) -->
 <section class="work-strip">
@@ -1228,10 +1071,8 @@
   <ul class="footer-links">
     <li><a href="#about-firm">About</a></li>
     <li><a href="#services">Services</a></li>
-    <li><a href="#serve">Who We Serve</a></li>
     <li><a href="lender-advisory.html">Lender Advisory</a></li>
     <li><a href="independent-advisor.html">Independent Advisor</a></li>
-    <li><a href="#fees">Fees</a></li>
     <li><a href="#about-bio">Team</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
